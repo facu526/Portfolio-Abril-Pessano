@@ -46,21 +46,65 @@ export const videoCategories = [
   {
     title: "UNBOXING",
     accent: "from-blush via-peach to-cream",
-    videos: ["/videos/unboxing-1.mp4", "/videos/unboxing-2.mp4"],
+    videos: [
+      {
+        title: "Video 1",
+        src: "/videos/unboxing-1.mp4",
+        poster: "/abril-1.jpg",
+      },
+      {
+        title: "Video 2",
+        src: "/videos/unboxing-2.mp4",
+        poster: "/abril-2.jpg",
+      },
+    ],
   },
   {
     title: "RECOMENDACIÓN",
     accent: "from-aqua via-cream to-blush",
-    videos: ["/videos/recomendacion-1.mp4", "/videos/recomendacion-2.mp4"],
+    videos: [
+      {
+        title: "Video 1",
+        src: "/videos/recomendacion-1.mp4",
+        poster: "/abril-2.jpg",
+      },
+      {
+        title: "Video 2",
+        src: "/videos/recomendacion-2.mp4",
+        poster: "/abril-3.jpg",
+      },
+    ],
   },
   {
     title: "MODA",
     accent: "from-lavender via-skysoft to-paper",
-    videos: ["/videos/moda-1.mp4", "/videos/moda-2.mp4"],
+    videos: [
+      {
+        title: "Video 1",
+        src: "/videos/moda-1.mp4",
+        poster: "/abril-3.jpg",
+      },
+      {
+        title: "Video 2",
+        src: "/videos/moda-2.mp4",
+        poster: "/abril-1.jpg",
+      },
+    ],
   },
   {
     title: "MAKE UP",
     accent: "from-peach via-blush to-lavender",
-    videos: ["/videos/makeup-1.mp4", "/videos/makeup-2.mp4"],
+    videos: [
+      {
+        title: "Video 1",
+        src: "/videos/makeup-1.mp4",
+        poster: "/abril-1.jpg",
+      },
+      {
+        title: "Video 2",
+        src: "/videos/makeup-2.mp4",
+        poster: "/abril-3.jpg",
+      },
+    ],
   },
 ];

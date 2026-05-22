@@ -74,15 +74,16 @@ export function Services() {
                 </div>
 
                 <div className="mx-auto mt-7 grid max-w-3xl justify-items-center gap-6 sm:grid-cols-2 xl:grid-cols-[repeat(2,minmax(14rem,18.5rem))]">
-                  {category.videos.map((src, index) => {
+                  {category.videos.map((video, index) => {
                     const currentIndex = globalIndex;
                     globalIndex += 1;
 
                     return (
                       <PhoneVideoMockup
-                        key={src}
-                        src={src}
-                        label={`Video ${index + 1}`}
+                        key={video.src}
+                        src={video.src}
+                        poster={video.poster}
+                        label={video.title || `Video ${index + 1}`}
                         title={category.title}
                         registerVideoRef={(node) =>
                           setVideoRef(currentIndex, node)

@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 type PhoneVideoMockupProps = {
   src: string;
+  poster: string;
   label: string;
   title: string;
   registerVideoRef: (element: HTMLVideoElement | null) => void;
@@ -12,12 +13,32 @@ type PhoneVideoMockupProps = {
 
 export function PhoneVideoMockup({
   src,
+  poster,
   label,
   title,
   registerVideoRef,
   onPlay,
 }: PhoneVideoMockupProps) {
   const [hasError, setHasError] = useState(false);
+  const [isVideoMounted, setIsVideoMounted] = useState(false);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+
+  useEffect(() => {
+    if (!isVideoMounted || !videoRef.current) {
+      return;
+    }
+
+    const video = videoRef.current;
+    onPlay(video);
+    video.play().catch(() => {
+      // Safari may require using the native controls after the custom tap.
+    });
+  }, [isVideoMounted, onPlay]);
+
+  const handleVideoRef = (element: HTMLVideoElement | null) => {
+    videoRef.current = element;
+    registerVideoRef(element);
+  };
 
   return (
     <article className="mx-auto w-full max-w-[270px]">
@@ -37,13 +58,25 @@ export function PhoneVideoMockup({
         />
 
         <div className="relative h-full w-full overflow-hidden rounded-[1.8rem] bg-gradient-to-br from-blush via-paper to-lavender">
-          {!hasError ? (
+          {hasError ? (
+            <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-blush via-paper to-aqua p-6 text-center">
+              <div>
+                <p className="text-sm font-black text-berry">
+                  No se pudo cargar este video
+                </p>
+                <p className="mt-2 break-all text-xs font-bold leading-5 text-ink/[0.56]">
+                  {src}
+                </p>
+              </div>
+            </div>
+          ) : isVideoMounted ? (
             <video
-              ref={registerVideoRef}
+              ref={handleVideoRef}
               className="block h-full w-full object-cover"
               controls
               playsInline
               preload="metadata"
+              poster={poster}
               onPlay={(event) => onPlay(event.currentTarget)}
               onError={() => setHasError(true)}
             >
@@ -51,13 +84,31 @@ export function PhoneVideoMockup({
               Tu navegador no soporta video HTML5.
             </video>
           ) : (
-            <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-blush via-paper to-aqua p-6 text-center">
-              <div>
-                <p className="text-sm font-black text-berry">
-                  Video pendiente
-                </p>
-                <p className="mt-2 break-all text-xs font-bold leading-5 text-ink/[0.56]">
-                  {src}
+            <div className="relative h-full w-full">
+              <img
+                src={poster}
+                alt={`${title} ${label}`}
+                className="h-full w-full object-cover"
+                loading="lazy"
+              />
+              <div
+                className="absolute inset-0 bg-gradient-to-t from-ink/[0.38] via-ink/[0.06] to-white/[0.08]"
+                aria-hidden="true"
+              />
+              <button
+                type="button"
+                className="absolute left-1/2 top-1/2 z-10 grid h-20 w-20 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border border-white/[0.72] bg-paper/[0.86] text-berry shadow-[0_18px_44px_rgba(51,42,48,0.24)] backdrop-blur-xl transition hover:scale-105"
+                onClick={() => setIsVideoMounted(true)}
+                aria-label={`Reproducir ${title} ${label}`}
+              >
+                <span
+                  className="ml-1 h-0 w-0 border-y-[0.72rem] border-l-[1.05rem] border-y-transparent border-l-current"
+                  aria-hidden="true"
+                />
+              </button>
+              <div className="pointer-events-none absolute bottom-4 left-4 right-4 rounded-[1.2rem] bg-paper/[0.78] px-3 py-2 text-center shadow-[0_12px_30px_rgba(51,42,48,0.14)] backdrop-blur-xl">
+                <p className="text-[0.66rem] font-black uppercase tracking-[0.16em] text-berry">
+                  Tocar para reproducir
                 </p>
               </div>
             </div>
