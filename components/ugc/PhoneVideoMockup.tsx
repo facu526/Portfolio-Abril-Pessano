@@ -4,28 +4,26 @@ import { useState } from "react";
 
 type PhoneVideoMockupProps = {
   src: string;
-  category: string;
   label: string;
-  index: number;
-  setVideoRef: (index: number, node: HTMLVideoElement | null) => void;
+  title: string;
+  registerVideoRef: (element: HTMLVideoElement | null) => void;
   onPlay: (currentVideo: HTMLVideoElement) => void;
 };
 
 export function PhoneVideoMockup({
   src,
-  category,
   label,
-  index,
-  setVideoRef,
+  title,
+  registerVideoRef,
   onPlay,
 }: PhoneVideoMockupProps) {
   const [hasError, setHasError] = useState(false);
 
   return (
-    <article className="phone-card">
+    <article className="phone-card mx-auto w-full max-w-[270px]">
       <div className="mb-4 flex items-center justify-between gap-3">
         <span className="rounded-full bg-ink px-3 py-1.5 text-xs font-black uppercase tracking-[0.08em] text-paper">
-          {category}
+          {title}
         </span>
         <span className="text-xs font-black uppercase tracking-[0.08em] text-berry/[0.62]">
           {label}
@@ -49,7 +47,7 @@ export function PhoneVideoMockup({
               </div>
             ) : (
               <video
-                ref={(node) => setVideoRef(index, node)}
+                ref={registerVideoRef}
                 className="relative z-[2] block h-full w-full object-cover"
                 controls
                 playsInline
@@ -58,6 +56,7 @@ export function PhoneVideoMockup({
                 onError={() => setHasError(true)}
               >
                 <source src={src} type="video/mp4" />
+                Tu navegador no soporta video HTML5.
               </video>
             )}
             <div className="phone-home" aria-hidden="true" />

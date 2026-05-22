@@ -82,10 +82,11 @@ export function Services() {
                       <PhoneVideoMockup
                         key={src}
                         src={src}
-                        category={category.title}
                         label={`Video ${index + 1}`}
-                        index={currentIndex}
-                        setVideoRef={setVideoRef}
+                        title={category.title}
+                        registerVideoRef={(node) =>
+                          setVideoRef(currentIndex, node)
+                        }
                         onPlay={pauseOtherVideos}
                       />
                     );
