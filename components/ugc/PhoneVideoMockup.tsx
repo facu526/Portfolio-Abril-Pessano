@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 type PhoneVideoMockupProps = {
   src: string;
@@ -19,34 +19,7 @@ export function PhoneVideoMockup({
   setVideoRef,
   onPlay,
 }: PhoneVideoMockupProps) {
-  const [videoMissing, setVideoMissing] = useState(false);
-  const [isChecking, setIsChecking] = useState(true);
-
-  useEffect(() => {
-    let isMounted = true;
-
-    setIsChecking(true);
-    setVideoMissing(false);
-
-    fetch(src, { method: "HEAD" })
-      .then((response) => {
-        if (isMounted) {
-          setVideoMissing(!response.ok);
-          setIsChecking(false);
-        }
-      })
-      .catch(() => {
-        if (isMounted) {
-          setVideoMissing(true);
-          setIsChecking(false);
-        }
-      });
-
-    return () => {
-      isMounted = false;
-      setVideoRef(index, null);
-    };
-  }, [index, setVideoRef, src]);
+  const [hasError, setHasError] = useState(false);
 
   return (
     <article className="phone-card">
@@ -62,13 +35,13 @@ export function PhoneVideoMockup({
       <div className="phone-device">
         <span className="phone-button phone-button-left" aria-hidden="true" />
         <span className="phone-button phone-button-right" aria-hidden="true" />
-        <div className="phone-bezel">
+        <div className="phone-bezel aspect-[9/16] w-full">
           <span className="phone-lens" aria-hidden="true" />
           <div className="phone-island" aria-hidden="true">
             <span />
           </div>
-          <div className="phone-screen">
-            {videoMissing ? (
+          <div className="phone-screen h-full w-full">
+            {hasError ? (
               <div className="phone-placeholder">
                 <span className="phone-play-mark" aria-hidden="true" />
                 <p>Video pendiente</p>
@@ -77,23 +50,16 @@ export function PhoneVideoMockup({
             ) : (
               <video
                 ref={(node) => setVideoRef(index, node)}
-                className="h-full w-full object-cover"
+                className="relative z-[2] block h-full w-full object-cover"
                 controls
                 playsInline
                 preload="metadata"
-                poster=""
                 onPlay={(event) => onPlay(event.currentTarget)}
-                onError={() => setVideoMissing(true)}
+                onError={() => setHasError(true)}
               >
                 <source src={src} type="video/mp4" />
               </video>
             )}
-            {isChecking && !videoMissing ? (
-              <div className="phone-loading">
-                <span />
-                <p>Chequeando video</p>
-              </div>
-            ) : null}
             <div className="phone-home" aria-hidden="true" />
           </div>
         </div>
