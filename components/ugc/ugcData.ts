@@ -82,12 +82,12 @@ export const videoCategories = [
       {
         title: "Video 1",
         src: "/videos/moda-1.mp4",
-        poster: "/abril-3.jpg",
+        poster: "/abril-1.jpg",
       },
       {
         title: "Video 2",
         src: "/videos/moda-2.mp4",
-        poster: "/abril-1.jpg",
+        poster: "/abril-3.jpg",
       },
     ],
   },
@@ -98,12 +98,12 @@ export const videoCategories = [
       {
         title: "Video 1",
         src: "/videos/makeup-1.mp4",
-        poster: "/abril-1.jpg",
+        poster: "/abril-2.jpg",
       },
       {
         title: "Video 2",
         src: "/videos/makeup-2.mp4",
-        poster: "/abril-3.jpg",
+        poster: "/abril-1.jpg",
       },
     ],
   },
