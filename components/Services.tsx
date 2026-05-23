@@ -1,34 +1,67 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 
 const videoCategories = [
   {
     title: "UNBOXING",
     videos: [
-      { label: "Video 1", href: "/videos/unboxing-1.mp4" },
-      { label: "Video 2", href: "/videos/unboxing-2.mp4" },
+      {
+        label: "Video 1",
+        href: "/videos/unboxing-1.mp4",
+        poster: "/video-posters/unboxing-1.jpg",
+      },
+      {
+        label: "Video 2",
+        href: "/videos/unboxing-2.mp4",
+        poster: "/video-posters/unboxing-2.jpg",
+      },
     ],
   },
   {
     title: "RECOMENDACIÓN",
     videos: [
-      { label: "Video 1", href: "/videos/recomendacion-1.mp4" },
-      { label: "Video 2", href: "/videos/recomendacion-2.mp4" },
+      {
+        label: "Video 1",
+        href: "/videos/recomendacion-1.mp4",
+        poster: "/video-posters/recomendacion-1.jpg",
+      },
+      {
+        label: "Video 2",
+        href: "/videos/recomendacion-2.mp4",
+        poster: "/video-posters/recomendacion-2.jpg",
+      },
     ],
   },
   {
     title: "MODA",
     videos: [
-      { label: "Video 1", href: "/videos/moda-1.mp4" },
-      { label: "Video 2", href: "/videos/moda-2.mp4" },
+      {
+        label: "Video 1",
+        href: "/videos/moda-1.mp4",
+        poster: "/video-posters/moda-1.jpg",
+      },
+      {
+        label: "Video 2",
+        href: "/videos/moda-2.mp4",
+        poster: "/video-posters/moda-2.jpg",
+      },
     ],
   },
   {
     title: "MAKE UP",
     videos: [
-      { label: "Video 1", href: "/videos/makeup-1.mp4" },
-      { label: "Video 2", href: "/videos/makeup-2.mp4" },
+      {
+        label: "Video 1",
+        href: "/videos/makeup-1.mp4",
+        poster: "/video-posters/makeup-1.jpg",
+      },
+      {
+        label: "Video 2",
+        href: "/videos/makeup-2.mp4",
+        poster: "/video-posters/makeup-2.jpg",
+      },
     ],
   },
 ];
@@ -38,12 +71,11 @@ const cardGradients = [
   "from-aqua via-paper to-lavender",
 ];
 
-const posterImages = ["/abril-1.jpg", "/abril-2.jpg", "/abril-3.jpg"];
-
 type SelectedVideo = {
   src: string;
   title: string;
   category: string;
+  poster: string;
 };
 
 function useIsDesktop() {
@@ -105,18 +137,39 @@ function MobileVideoModal({
   src,
   title,
   category,
+  poster,
   onClose,
 }: SelectedVideo & { onClose: () => void }) {
   const videoRef = useRef<HTMLVideoElement | null>(null);
+
+  useEffect(() => {
+    const previousOverflow = document.body.style.overflow;
+
+    document.body.style.overflow = "hidden";
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        videoRef.current?.pause();
+        onClose();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [onClose]);
 
   const handleClose = () => {
     videoRef.current?.pause();
     onClose();
   };
 
-  return (
+  return createPortal(
     <div
-      className="fixed inset-0 z-50 flex items-end justify-center bg-ink/[0.72] px-4 py-5 backdrop-blur-md sm:items-center"
+      className="fixed inset-0 z-[99999] flex items-center justify-center bg-ink/[0.82] px-4 py-6 backdrop-blur-md"
       role="dialog"
       aria-modal="true"
       aria-label={`${category} ${title}`}
@@ -128,22 +181,24 @@ function MobileVideoModal({
         aria-label="Cerrar video"
       />
 
-      <div className="relative z-10 w-full max-w-xl overflow-hidden rounded-[2rem] border border-white/[0.24] bg-paper p-4 shadow-[0_32px_90px_rgba(0,0,0,0.34)]">
+      <button
+        type="button"
+        onClick={handleClose}
+        className="fixed right-4 z-[100000] rounded-full bg-paper px-5 py-3 text-sm font-black text-ink shadow-[0_18px_44px_rgba(0,0,0,0.28)]"
+        style={{ top: "calc(env(safe-area-inset-top) + 16px)" }}
+        aria-label="Cerrar video"
+      >
+        Cerrar ✕
+      </button>
+
+      <div className="relative z-[100000] w-full max-w-[430px] overflow-hidden rounded-[2rem] border border-white/[0.28] bg-paper p-3 shadow-[0_32px_90px_rgba(0,0,0,0.36)]">
         <div className="mb-4 flex items-center justify-between gap-4">
-          <div>
+          <div className="px-2 pt-2">
             <p className="text-xs font-black uppercase tracking-[0.18em] text-berry">
               {category}
             </p>
             <h3 className="mt-1 text-xl font-black text-ink">{title}</h3>
           </div>
-          <button
-            type="button"
-            onClick={handleClose}
-            className="grid h-11 w-11 flex-none place-items-center rounded-full bg-ink text-xl font-black leading-none text-paper shadow-[0_14px_34px_rgba(51,42,48,0.24)]"
-            aria-label="Cerrar video"
-          >
-            ×
-          </button>
         </div>
 
         <video
@@ -151,13 +206,23 @@ function MobileVideoModal({
           controls
           playsInline
           preload="metadata"
-          className="w-full max-h-[80vh] rounded-3xl bg-ink object-contain"
+          poster={poster}
+          className="w-full max-h-[72vh] rounded-[1.5rem] bg-ink object-contain"
         >
           <source src={src} type="video/mp4" />
           Tu navegador no soporta video HTML5.
         </video>
+
+        <button
+          type="button"
+          onClick={handleClose}
+          className="mt-4 w-full rounded-full bg-ink px-5 py-4 text-sm font-black text-paper shadow-[0_14px_34px_rgba(51,42,48,0.24)]"
+        >
+          Cerrar video
+        </button>
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 }
 
@@ -189,6 +254,7 @@ function MobileVideoExamples() {
                         src: video.href,
                         title: video.label,
                         category: category.title,
+                        poster: video.poster,
                       })
                     }
                     className="group mx-auto w-full max-w-[20rem] text-left focus:outline-none focus-visible:ring-4 focus-visible:ring-roseglow/[0.32]"
@@ -212,14 +278,9 @@ function MobileVideoExamples() {
                           <span className="phone-lens" />
                           <span className="phone-screen block">
                             <img
-                              src={
-                                posterImages[
-                                  (index + category.title.length) %
-                                    posterImages.length
-                                ]
-                              }
+                              src={video.poster}
                               alt={`${category.title} ${video.label}`}
-                              className="h-full w-full object-cover"
+                              className="h-full w-full bg-ink object-cover"
                               loading="lazy"
                             />
                             <span
@@ -263,6 +324,7 @@ function MobileVideoExamples() {
           src={selectedVideo.src}
           title={selectedVideo.title}
           category={selectedVideo.category}
+          poster={selectedVideo.poster}
           onClose={() => setSelectedVideo(null)}
         />
       ) : null}
@@ -335,6 +397,7 @@ function DesktopVideoExamples() {
                               controls
                               playsInline
                               preload="metadata"
+                              poster={video.poster}
                               className="block h-full w-full object-cover"
                               onPlay={(event) =>
                                 handlePlay(event.currentTarget)
