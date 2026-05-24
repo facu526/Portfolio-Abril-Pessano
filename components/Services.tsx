@@ -438,6 +438,38 @@ export function Services() {
         className="sparkle bottom-20 right-[14%] text-peach [--size:1.5rem]"
         aria-hidden="true"
       />
+      <span
+        className="silver-star left-[22%] bottom-[18%] [--size:0.95rem]"
+        aria-hidden="true"
+      />
+      <span
+        className="silver-sprinkles right-[10%] top-[18%]"
+        aria-hidden="true"
+      />
+      <span
+        className="silver-sprinkles left-[9%] bottom-[34%]"
+        aria-hidden="true"
+      />
+      <span
+        className="tropical-flower flower-hibiscus left-[5%] top-[34%] opacity-55"
+        aria-hidden="true"
+      />
+      <span
+        className="tropical-flower flower-plumeria right-[6%] bottom-[18%] opacity-60"
+        aria-hidden="true"
+      />
+      <span
+        className="glitter-burst left-[30%] top-[16%]"
+        aria-hidden="true"
+      />
+      <span
+        className="glitter-burst right-[28%] bottom-[10%]"
+        aria-hidden="true"
+      />
+      <span
+        className="mirror-ball right-[3%] top-[48%] hidden lg:block"
+        aria-hidden="true"
+      />
 
       <div className="section-shell">
         {isDesktop ? <DesktopVideoExamples /> : <MobileVideoExamples />}

@@ -18,6 +18,38 @@ export function About() {
         className="mini-star left-[8%] bottom-[20%] text-roseglow [--size:0.62rem]"
         aria-hidden="true"
       />
+      <span
+        className="silver-star right-[22%] bottom-[18%] [--size:0.9rem]"
+        aria-hidden="true"
+      />
+      <span
+        className="tropical-flower left-[14%] top-[16%] opacity-60"
+        aria-hidden="true"
+      />
+      <span
+        className="tropical-flower flower-hibiscus right-[7%] top-[36%] opacity-55"
+        aria-hidden="true"
+      />
+      <span
+        className="tropical-flower flower-plumeria left-[4%] bottom-[10%] hidden opacity-65 sm:block"
+        aria-hidden="true"
+      />
+      <span
+        className="silver-sprinkles right-[32%] top-[24%]"
+        aria-hidden="true"
+      />
+      <span
+        className="silver-sprinkles left-[27%] bottom-[28%]"
+        aria-hidden="true"
+      />
+      <span
+        className="glitter-burst right-[18%] top-[12%]"
+        aria-hidden="true"
+      />
+      <span
+        className="mirror-ball left-[5%] top-[44%] hidden lg:block"
+        aria-hidden="true"
+      />
 
       <div className="section-shell grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
         <div className="relative order-2 mx-auto w-full max-w-[30rem] lg:order-1">
@@ -26,6 +58,7 @@ export function About() {
             aria-hidden="true"
           />
           <div className="editorial-frame relative rounded-[2.4rem] p-3">
+            <span className="silver-star absolute -right-4 top-8 z-20 [--size:0.85rem]" aria-hidden="true" />
             <div className="relative aspect-[4/5] overflow-hidden rounded-[1.85rem]">
               <Image
                 src="/abril-2.jpg"
@@ -46,9 +79,9 @@ export function About() {
         </div>
 
         <div className="order-1 lg:order-2">
-          <p className="eyebrow">¿Qué es el UGC?</p>
+          <p className="eyebrow">UGC</p>
           <h2 className="display-title mt-5 max-w-2xl text-[clamp(3.25rem,7vw,6.6rem)] text-ink">
-            ¿Qué es el UGC?
+            UGC
           </h2>
           <div className="mt-7 grid gap-5 text-pretty text-base leading-8 text-ink/[0.72] sm:text-lg">
             <p>
@@ -72,7 +105,7 @@ export function About() {
             {pillars.map((tag, index) => (
                 <span
                   key={tag}
-                  className="rounded-[1.45rem] border border-berry/[0.15] bg-paper/[0.72] px-4 py-5 text-sm font-black text-berry shadow-[0_12px_28px_rgba(168,72,115,0.08)]"
+                  className="silver-edge rounded-[1.45rem] border border-berry/[0.15] bg-paper/[0.72] px-4 py-5 text-sm font-black text-berry shadow-[0_12px_28px_rgba(168,72,115,0.08)]"
                 >
                   <span className="mb-3 grid h-9 w-9 place-items-center rounded-full bg-gradient-to-br from-blush via-peach to-aqua text-xs text-ink">
                     0{index + 1}

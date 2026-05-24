@@ -14,13 +14,14 @@ export function Navbar() {
         className="section-shell soft-border relative flex items-center justify-between rounded-full bg-paper/[0.78] px-3 py-2 shadow-[0_16px_50px_rgba(168,72,115,0.10)] backdrop-blur-2xl"
         aria-label="Navegación principal"
       >
+        <span className="nav-glitter" aria-hidden="true" />
         <a
           href="#inicio"
           onClick={closeMenu}
           className="group flex items-center gap-3 rounded-full px-2 py-1"
           aria-label="Abril Pessano, inicio"
         >
-          <span className="grid h-9 w-9 place-items-center rounded-full bg-gradient-to-br from-roseglow via-peach to-aqua text-sm font-black text-white shadow-[0_12px_26px_rgba(168,72,115,0.20)]">
+          <span className="ap-monogram grid h-9 w-9 place-items-center rounded-full text-sm font-black text-white shadow-[0_12px_26px_rgba(168,72,115,0.20)]">
             AP
           </span>
           <span className="hidden text-sm font-black text-ink sm:block">

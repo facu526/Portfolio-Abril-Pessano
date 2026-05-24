@@ -39,7 +39,7 @@ export function Contact() {
       id="contacto"
       className="relative isolate overflow-hidden px-4 pb-10 pt-16 sm:pb-14"
     >
-      <div className="section-shell relative overflow-hidden rounded-[2.4rem] border border-white/[0.70] bg-gradient-to-br from-ink via-berry to-roseglow p-7 text-paper shadow-[0_34px_100px_rgba(168,72,115,0.22)] sm:p-10 lg:p-14">
+      <div className="silver-edge section-shell relative overflow-hidden rounded-[2.4rem] border border-white/[0.70] bg-gradient-to-br from-ink via-berry to-roseglow p-7 text-paper shadow-[0_34px_100px_rgba(168,72,115,0.22)] sm:p-10 lg:p-14">
         <div
           className="absolute inset-0 opacity-[0.36]"
           aria-hidden="true"
@@ -57,18 +57,35 @@ export function Contact() {
           className="absolute -bottom-20 left-8 h-40 w-64 -rotate-12 rounded-[45%] border border-white/[0.18]"
           aria-hidden="true"
         />
+        <span className="silver-star right-[12%] top-[24%] [--size:1.05rem]" aria-hidden="true" />
+        <span className="silver-star left-[9%] bottom-[24%] [--size:0.72rem]" aria-hidden="true" />
+        <span className="silver-sprinkles right-[26%] top-[14%]" aria-hidden="true" />
+        <span className="silver-sprinkles left-[42%] bottom-[16%]" aria-hidden="true" />
+        <span className="glitter-burst right-[38%] top-[42%]" aria-hidden="true" />
+        <span className="mirror-ball right-[7%] top-[28%]" aria-hidden="true" />
+        <span className="tropical-flower flower-hibiscus right-[7%] bottom-[12%] opacity-50" aria-hidden="true" />
+        <span className="tropical-flower flower-plumeria left-[5%] bottom-[10%] hidden opacity-45 sm:block" aria-hidden="true" />
+        <div
+          className="contact-watermark absolute right-7 top-7 z-10 hidden text-right sm:block lg:right-12 lg:top-9"
+          aria-hidden="true"
+        >
+          <span className="block text-[clamp(2.35rem,4.8vw,5rem)] font-black leading-none text-white/[0.15]">
+            Contacto
+          </span>
+          <span className="mx-1 mt-3 inline-flex h-px w-44 bg-gradient-to-r from-transparent via-white/[0.5] to-silver/70" />
+        </div>
 
-        <div className="relative z-10 grid items-end gap-8 lg:grid-cols-[1fr_0.8fr]">
-          <div>
-            <p className="text-sm font-black uppercase text-white/[0.72]">
+        <div className="relative z-10 grid items-center gap-8 pt-10 text-center lg:grid-cols-[1fr_0.72fr] lg:gap-10 lg:pt-16 lg:text-left">
+          <div className="mx-auto max-w-4xl lg:mx-0">
+            <p className="mx-auto inline-flex rounded-full border border-white/[0.18] bg-white/[0.10] px-4 py-2 text-sm font-black uppercase text-white/[0.78] shadow-[0_16px_34px_rgba(51,42,48,0.12)] backdrop-blur-xl lg:mx-0">
               Contacto
             </p>
-            <h2 className="display-title mt-5 max-w-3xl text-[clamp(3.2rem,8vw,7rem)] leading-[0.92]">
-              Contacto
+            <h2 className="display-title mx-auto mt-5 max-w-4xl text-[clamp(2.7rem,6.8vw,6.2rem)] leading-[0.92] lg:mx-0">
+              ¿Creamos contenido auténtico para tu marca?
             </h2>
           </div>
 
-          <div className="flex flex-col gap-3 sm:flex-row lg:flex-col lg:items-stretch">
+          <div className="mx-auto flex w-full max-w-xl flex-col gap-3 sm:flex-row lg:max-w-none lg:flex-col lg:items-stretch">
             {contactLinks.map((link) => (
               <a
                 key={link.label}
