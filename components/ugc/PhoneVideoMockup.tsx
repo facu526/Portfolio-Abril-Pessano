@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { pauseOtherVideos } from "@/lib/videoControls";
 
 type PhoneVideoMockupProps = {
   src: string;
@@ -29,6 +30,7 @@ export function PhoneVideoMockup({
     }
 
     const video = videoRef.current;
+    pauseOtherVideos(video);
     onPlay(video);
     video.play().catch(() => {
       // Safari may require using the native controls after the custom tap.
@@ -67,10 +69,6 @@ export function PhoneVideoMockup({
               className="h-full w-full object-cover"
               loading="lazy"
             />
-            <div
-              className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/[0.42] via-ink/[0.10] to-white/[0.08]"
-              aria-hidden="true"
-            />
             <div className="absolute inset-x-4 bottom-5 z-10 rounded-[1.35rem] bg-paper/[0.88] p-4 text-center shadow-[0_18px_44px_rgba(51,42,48,0.22)] backdrop-blur-xl">
               <a
                 href={src}
@@ -106,7 +104,10 @@ export function PhoneVideoMockup({
                 playsInline
                 preload="metadata"
                 poster={poster}
-                onPlay={(event) => onPlay(event.currentTarget)}
+                onPlay={(event) => {
+                  pauseOtherVideos(event.currentTarget);
+                  onPlay(event.currentTarget);
+                }}
                 onError={() => setHasError(true)}
               >
                 <source src={src} type="video/mp4" />
@@ -119,10 +120,6 @@ export function PhoneVideoMockup({
                   alt={posterAlt}
                   className="h-full w-full object-cover"
                   loading="lazy"
-                />
-                <div
-                  className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/[0.38] via-ink/[0.06] to-white/[0.08]"
-                  aria-hidden="true"
                 />
                 <button
                   type="button"

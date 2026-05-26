@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
+import { pauseOtherVideos } from "@/lib/videoControls";
 
 const videoCategories = [
   {
@@ -64,11 +65,6 @@ const videoCategories = [
       },
     ],
   },
-];
-
-const cardGradients = [
-  "from-blush via-peach to-aqua",
-  "from-aqua via-paper to-lavender",
 ];
 
 type SelectedVideo = {
@@ -208,6 +204,7 @@ function MobileVideoModal({
           preload="metadata"
           poster={poster}
           className="w-full max-h-[72vh] rounded-[1.5rem] bg-ink object-contain"
+          onPlay={(event) => pauseOtherVideos(event.currentTarget)}
         >
           <source src={src} type="video/mp4" />
           Tu navegador no soporta video HTML5.
@@ -245,7 +242,7 @@ function MobileVideoExamples() {
               <CategoryHeader title={category.title} />
 
               <div className="mt-7 grid gap-6">
-                {category.videos.map((video, index) => (
+                {category.videos.map((video) => (
                   <button
                     key={video.href}
                     type="button"
@@ -282,12 +279,6 @@ function MobileVideoExamples() {
                               alt={`${category.title} ${video.label}`}
                               className="h-full w-full bg-ink object-cover"
                               loading="lazy"
-                            />
-                            <span
-                              className={`absolute inset-0 bg-gradient-to-t from-ink/[0.52] via-ink/[0.10] to-white/[0.16] ${
-                                cardGradients[index % cardGradients.length]
-                              } opacity-75 mix-blend-soft-light`}
-                              aria-hidden="true"
                             />
                             <span className="absolute inset-x-4 top-12 z-10 rounded-full bg-paper/[0.78] px-3 py-2 text-center text-[0.66rem] font-black uppercase tracking-[0.16em] text-berry shadow-[0_12px_28px_rgba(51,42,48,0.16)] backdrop-blur-xl">
                               {category.title}
@@ -333,24 +324,6 @@ function MobileVideoExamples() {
 }
 
 function DesktopVideoExamples() {
-  const videoRefs = useRef<HTMLVideoElement[]>([]);
-
-  const registerVideoRef = (index: number, element: HTMLVideoElement | null) => {
-    if (element) {
-      videoRefs.current[index] = element;
-    }
-  };
-
-  const handlePlay = (currentVideo: HTMLVideoElement) => {
-    videoRefs.current.forEach((video) => {
-      if (video && video !== currentVideo && !video.paused) {
-        video.pause();
-      }
-    });
-  };
-
-  let videoIndex = 0;
-
   return (
     <>
       <ExamplesHeader />
@@ -365,11 +338,7 @@ function DesktopVideoExamples() {
               <CategoryHeader title={category.title} />
 
               <div className="mx-auto mt-8 grid max-w-4xl grid-cols-2 justify-items-center gap-8">
-                {category.videos.map((video) => {
-                  const currentIndex = videoIndex;
-                  videoIndex += 1;
-
-                  return (
+                {category.videos.map((video) => (
                     <article
                       key={video.href}
                       className="phone-card text-center"
@@ -391,16 +360,13 @@ function DesktopVideoExamples() {
                           <span className="phone-lens" />
                           <div className="phone-screen">
                             <video
-                              ref={(element) =>
-                                registerVideoRef(currentIndex, element)
-                              }
                               controls
                               playsInline
                               preload="metadata"
                               poster={video.poster}
                               className="block h-full w-full object-cover"
                               onPlay={(event) =>
-                                handlePlay(event.currentTarget)
+                                pauseOtherVideos(event.currentTarget)
                               }
                             >
                               <source src={video.href} type="video/mp4" />
@@ -411,8 +377,7 @@ function DesktopVideoExamples() {
                         </div>
                       </div>
                     </article>
-                  );
-                })}
+                ))}
               </div>
             </div>
           </article>

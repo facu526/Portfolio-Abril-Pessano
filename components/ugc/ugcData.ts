@@ -4,25 +4,6 @@ export const ugcContact = {
   mail: "abrilpessano@gmail.com",
 };
 
-export const ugcPillars = [
-  {
-    title: "Autenticidad",
-    text: "Contenido natural, humano y fiel a la experiencia real.",
-  },
-  {
-    title: "Confianza",
-    text: "Mensajes cercanos que hacen que la marca se sienta creíble.",
-  },
-  {
-    title: "Conexión",
-    text: "Historias visuales pensadas para generar identificación.",
-  },
-  {
-    title: "Conversión",
-    text: "Videos estratégicos que ayudan a transformar atención en acción.",
-  },
-];
-
 export const brandContributions = [
   "✨ Contenido auténtico y cercano",
   "✨ Comunicación natural frente a cámara",
@@ -35,13 +16,6 @@ export const brandContributions = [
   "✨ Contenido pensado para conectar y convertir",
 ];
 
-export const strategicSteps = [
-  "captar atención",
-  "transmitir confianza",
-  "generar conexión",
-  "mostrar el producto de una manera real y atractiva",
-];
-
 export const videoCategories = [
   {
     title: "UNBOXING",
@@ -50,12 +24,12 @@ export const videoCategories = [
       {
         title: "Video 1",
         src: "/videos/unboxing-1.mp4",
-        poster: "/abril-1.jpg",
+        poster: "/video-posters/unboxing-1.jpg",
       },
       {
         title: "Video 2",
         src: "/videos/unboxing-2.mp4",
-        poster: "/abril-2.jpg",
+        poster: "/video-posters/unboxing-2.jpg",
       },
     ],
   },
@@ -66,12 +40,12 @@ export const videoCategories = [
       {
         title: "Video 1",
         src: "/videos/recomendacion-1.mp4",
-        poster: "/abril-2.jpg",
+        poster: "/video-posters/recomendacion-1.jpg",
       },
       {
         title: "Video 2",
         src: "/videos/recomendacion-2.mp4",
-        poster: "/abril-3.jpg",
+        poster: "/video-posters/recomendacion-2.jpg",
       },
     ],
   },
@@ -82,12 +56,12 @@ export const videoCategories = [
       {
         title: "Video 1",
         src: "/videos/moda-1.mp4",
-        poster: "/abril-1.jpg",
+        poster: "/video-posters/moda-1.jpg",
       },
       {
         title: "Video 2",
         src: "/videos/moda-2.mp4",
-        poster: "/abril-3.jpg",
+        poster: "/video-posters/moda-2.jpg",
       },
     ],
   },
@@ -98,12 +72,12 @@ export const videoCategories = [
       {
         title: "Video 1",
         src: "/videos/makeup-1.mp4",
-        poster: "/abril-2.jpg",
+        poster: "/video-posters/makeup-1.jpg",
       },
       {
         title: "Video 2",
         src: "/videos/makeup-2.mp4",
-        poster: "/abril-1.jpg",
+        poster: "/video-posters/makeup-2.jpg",
       },
     ],
   },

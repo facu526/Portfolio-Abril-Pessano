@@ -1,12 +1,7 @@
+import { FeatureVideoCard } from "./FeatureVideoCard";
 import { RevealSection } from "./RevealSection";
 
 export function Essence() {
-  const strategy = [
-    "Captar atención",
-    "Transmitir confianza",
-    "Generar conexión",
-    "Mostrar el producto de una manera real y atractiva",
-  ];
   const contributions = [
     "✨ Contenido auténtico y cercano",
     "✨ Comunicación natural frente a cámara",
@@ -57,41 +52,25 @@ export function Essence() {
         aria-hidden="true"
       />
       <div className="section-shell">
-        <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:gap-12">
+        <div className="mx-auto max-w-4xl text-center">
           <div className="relative">
             <p className="eyebrow">¿Por qué trabajar conmigo?</p>
             <h2 className="display-title mt-5 text-[clamp(3.1rem,8vw,7rem)] text-ink">
               ¿Por qué trabajar conmigo?
             </h2>
-            <div className="silver-edge mt-7 inline-flex items-center gap-3 rounded-full bg-paper/[0.74] px-4 py-3 text-sm font-black uppercase tracking-[0.08em] text-berry shadow-[0_18px_44px_rgba(168,72,115,0.08)] backdrop-blur-xl">
+            <div className="silver-edge mt-7 inline-flex items-center gap-3 rounded-full bg-paper/[0.74] px-4 py-3 text-left text-sm font-black uppercase tracking-[0.08em] text-berry shadow-[0_18px_44px_rgba(168,72,115,0.08)] backdrop-blur-xl">
               <span className="ap-monogram grid h-9 w-9 place-items-center rounded-full text-xs text-white">
                 AP
               </span>
               Estrategia + estética
             </div>
           </div>
-
-          <div className="grid gap-5 text-pretty text-base leading-8 text-ink/[0.72] sm:text-lg">
-            <p>
-              Mi enfoque está en transmitir mensajes auténticos, cercanos y
-              emocionales para que la audiencia no solo vea un producto, sino
-              que realmente se identifique con él. Como creadora UGC, entiendo
-              la importancia de captar la atención en los primeros segundos y
-              generar confianza de manera orgánica.
-            </p>
-            <div className="silver-edge rounded-[1.8rem] bg-gradient-to-br from-blush/[0.58] via-peach/[0.38] to-aqua/[0.42] p-6 text-center shadow-[0_18px_52px_rgba(168,72,115,0.09)] sm:p-7">
-              <p className="mx-auto max-w-2xl text-lg font-black leading-7 text-ink">
-                Cada video que realizo está pensado estratégicamente para:
-              </p>
-              <div className="mx-auto mt-5 grid max-w-2xl gap-3 sm:grid-cols-2">
-                {strategy.map((item) => (
-                  <span key={item} className="flex min-h-14 items-center justify-center rounded-full bg-paper/[0.78] px-5 py-3 text-center text-sm font-black leading-5 text-berry shadow-[0_12px_28px_rgba(168,72,115,0.08)] sm:text-base">
-                    {item}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
+          <FeatureVideoCard
+            src="/videos/trabajar-conmigo.mp4"
+            poster="/video-posters/trabajar-conmigo.jpg"
+            label="Video sobre por qué trabajar con Abril Pessano"
+            className="mt-8 sm:mt-10"
+          />
         </div>
 
         <div className="mt-12">
