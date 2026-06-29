@@ -48,6 +48,11 @@ const videoCategories = [
         href: "/videos/moda-2.mp4",
         poster: "/video-posters/moda-2.jpg",
       },
+      {
+        label: "Video 3",
+        href: "/videos/moda-3.mp4",
+        poster: "/video-posters/moda-3.jpg",
+      },
     ],
   },
   {
@@ -62,6 +67,16 @@ const videoCategories = [
         label: "Video 2",
         href: "/videos/makeup-2.mp4",
         poster: "/video-posters/makeup-2.jpg",
+      },
+    ],
+  },
+  {
+    title: "SKINCARE",
+    videos: [
+      {
+        label: "Video 1",
+        href: "/videos/skincare-1.mp4",
+        poster: "/video-posters/skincare-1.jpg",
       },
     ],
   },
@@ -337,46 +352,43 @@ function DesktopVideoExamples() {
             <div className="relative z-10">
               <CategoryHeader title={category.title} />
 
-              <div className="mx-auto mt-8 grid max-w-4xl grid-cols-2 justify-items-center gap-8">
+              <div className="mx-auto mt-8 flex max-w-5xl flex-wrap justify-center gap-8">
                 {category.videos.map((video) => (
-                    <article
-                      key={video.href}
-                      className="phone-card text-center"
-                    >
-                      <p className="text-xs font-black uppercase tracking-[0.22em] text-berry">
-                        {video.label}
-                      </p>
-                      <h4 className="mt-1 text-sm font-black uppercase tracking-[0.08em] text-ink">
-                        {category.title}
-                      </h4>
+                  <article key={video.href} className="phone-card text-center">
+                    <p className="text-xs font-black uppercase tracking-[0.22em] text-berry">
+                      {video.label}
+                    </p>
+                    <h4 className="mt-1 text-sm font-black uppercase tracking-[0.08em] text-ink">
+                      {category.title}
+                    </h4>
 
-                      <div className="phone-device mt-4">
-                        <span className="phone-button phone-button-left" />
-                        <span className="phone-button phone-button-right" />
-                        <div className="phone-bezel aspect-[9/16]">
-                          <span className="phone-island">
-                            <span />
-                          </span>
-                          <span className="phone-lens" />
-                          <div className="phone-screen">
-                            <video
-                              controls
-                              playsInline
-                              preload="metadata"
-                              poster={video.poster}
-                              className="block h-full w-full object-cover"
-                              onPlay={(event) =>
-                                pauseOtherVideos(event.currentTarget)
-                              }
-                            >
-                              <source src={video.href} type="video/mp4" />
-                              Tu navegador no soporta video HTML5.
-                            </video>
-                          </div>
-                          <span className="phone-home" />
+                    <div className="phone-device mt-4">
+                      <span className="phone-button phone-button-left" />
+                      <span className="phone-button phone-button-right" />
+                      <div className="phone-bezel aspect-[9/16]">
+                        <span className="phone-island">
+                          <span />
+                        </span>
+                        <span className="phone-lens" />
+                        <div className="phone-screen">
+                          <video
+                            controls
+                            playsInline
+                            preload="metadata"
+                            poster={video.poster}
+                            className="block h-full w-full object-cover"
+                            onPlay={(event) =>
+                              pauseOtherVideos(event.currentTarget)
+                            }
+                          >
+                            <source src={video.href} type="video/mp4" />
+                            Tu navegador no soporta video HTML5.
+                          </video>
                         </div>
+                        <span className="phone-home" />
                       </div>
-                    </article>
+                    </div>
+                  </article>
                 ))}
               </div>
             </div>
