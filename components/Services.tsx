@@ -53,6 +53,11 @@ const videoCategories = [
         href: "/videos/moda-3.mp4",
         poster: "/video-posters/moda-3.jpg",
       },
+      {
+        label: "Video 4",
+        href: "/videos/moda-4.mp4",
+        poster: "/video-posters/moda-4.jpg",
+      },
     ],
   },
   {
@@ -352,7 +357,13 @@ function DesktopVideoExamples() {
             <div className="relative z-10">
               <CategoryHeader title={category.title} />
 
-              <div className="mx-auto mt-8 flex max-w-5xl flex-wrap justify-center gap-8">
+              <div
+                className={
+                  category.title === "MODA"
+                    ? "mx-auto mt-8 grid max-w-[40rem] grid-cols-2 justify-items-center gap-8"
+                    : "mx-auto mt-8 flex max-w-5xl flex-wrap justify-center gap-8"
+                }
+              >
                 {category.videos.map((video) => (
                   <article key={video.href} className="phone-card text-center">
                     <p className="text-xs font-black uppercase tracking-[0.22em] text-berry">

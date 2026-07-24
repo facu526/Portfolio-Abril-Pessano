@@ -4,3 +4,7 @@ out
 .vercel
 *.log
 .env*
+
+raw-videos/
+*.MOV
+*.mov
