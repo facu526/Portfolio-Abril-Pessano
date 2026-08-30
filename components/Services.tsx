@@ -26,6 +26,26 @@ const videoCategories = [
     ],
   },
   {
+    title: "EXPERIENCIAS",
+    videos: [
+      {
+        label: "Video 1",
+        href: "/videos/experiencias-1.mp4",
+        poster: "/video-posters/experiencias-1.jpg",
+      },
+      {
+        label: "Video 2",
+        href: "/videos/experiencias-2.mp4",
+        poster: "/video-posters/experiencias-2.jpg",
+      },
+      {
+        label: "Video 3",
+        href: "/videos/experiencias-3.mp4",
+        poster: "/video-posters/experiencias-3.jpg",
+      },
+    ],
+  },
+  {
     title: "RECOMENDACIÓN",
     videos: [
       {
@@ -77,26 +97,6 @@ const videoCategories = [
         label: "Video 1",
         href: "/videos/skincare-1.mp4",
         poster: "/video-posters/skincare-1.jpg",
-      },
-    ],
-  },
-  {
-    title: "EXPERIENCIAS",
-    videos: [
-      {
-        label: "Video 1",
-        href: "/videos/experiencias-1.mp4",
-        poster: "/video-posters/experiencias-1.jpg",
-      },
-      {
-        label: "Video 2",
-        href: "/videos/experiencias-2.mp4",
-        poster: "/video-posters/experiencias-2.jpg",
-      },
-      {
-        label: "Video 3",
-        href: "/videos/experiencias-3.mp4",
-        poster: "/video-posters/experiencias-3.jpg",
       },
     ],
   },
