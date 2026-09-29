@@ -23,6 +23,21 @@ const videoCategories = [
         href: "/videos/moda-4.mp4",
         poster: "/video-posters/moda-4.jpg",
       },
+      {
+        label: "Video 4",
+        href: "/videos/moda-5.mp4",
+        poster: "/video-posters/moda-5.jpg",
+      },
+      {
+        label: "Video 5",
+        href: "/videos/moda-6.mp4",
+        poster: "/video-posters/moda-6.jpg",
+      },
+      {
+        label: "Video 6",
+        href: "/videos/moda-7.mp4",
+        poster: "/video-posters/moda-7.jpg",
+      },
     ],
   },
   {
