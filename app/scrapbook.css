@@ -1,0 +1,1889 @@
+/* ==========================================================================
+   Capa decorativa del moodboard: papeles, stickers, recortes y movimiento.
+   El layout vive en globals.css; acá solo se suma lo que se apoya encima.
+   Nada de esto recibe clics, para que nunca tape un botón o un video.
+   ========================================================================== */
+
+:root {
+  /* Corazones y estrellas muy tenues, tono sobre tono, para los fondos rosa. */
+  --confetti: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260' viewBox='0 0 260 260'%3E%3Cg fill='%23fff' fill-opacity='.2'%3E%3Cpath d='M42 44s-12-8-13-16c-.4-5 3-8 7-8 3 0 5 1.800 6 4 1-2.200 3-4 6-4 4 0 7.400 3 7 8-1 8-13 16-13 16Z'/%3E%3Cpath d='M190 30c1 8 4 11 12 12-8 1-11 4-12 12-1-8-4-11-12-12 8-1 11-4 12-12Z'/%3E%3Cpath d='M120 120l4 9 10 1-7 7 2 10-9-5-9 5 2-10-7-7 10-1Z'/%3E%3Cpath d='M214 158s-9-6-10-12c-.3-4 2.300-6 5-6 2.300 0 4 1.400 5 3 1-1.600 2.700-3 5-3 2.700 0 5.300 2 5 6-1 6-10 12-10 12Z'/%3E%3Cpath d='M46 196c1 8 4 11 12 12-8 1-11 4-12 12-1-8-4-11-12-12 8-1 11-4 12-12Z'/%3E%3Ccircle cx='100' cy='30' r='3'/%3E%3Ccircle cx='230' cy='90' r='2.500'/%3E%3Ccircle cx='150' cy='220' r='3'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+.sticker,
+.scrap,
+.spread__stickers,
+.postmark,
+.ship-label,
+.tape-measure,
+.packing-tape,
+.feed-window,
+.hero__apps,
+.contact__strip {
+  pointer-events: none;
+}
+
+.sticker {
+  overflow: visible;
+  filter: drop-shadow(0 2px 2px rgb(92 40 62 / 0.26));
+}
+
+/* Fondos rosa con confetti */
+.hero,
+.why,
+.together,
+.spread--accesorios,
+.spread--make-up {
+  background-image: var(--confetti), var(--grain);
+}
+
+/* --------------------------------------------------------------------------
+   Papeles
+   -------------------------------------------------------------------------- */
+
+.scrap {
+  position: absolute;
+  display: block;
+  box-shadow: var(--shadow-paper);
+  clip-path: polygon(0 3%, 7% 0, 18% 2%, 33% 0, 49% 2%, 64% 0, 81% 2%, 100% 0, 99% 22%, 100% 47%, 98% 72%, 100% 100%, 84% 98%, 66% 100%, 47% 97%, 28% 100%, 12% 98%, 0 100%, 2% 71%, 0 46%, 2% 24%);
+}
+
+.scrap--lined {
+  background:
+    linear-gradient(90deg, transparent 12%, rgb(196 70 111 / 0.3) 12% 12.6%, transparent 12.6%),
+    repeating-linear-gradient(180deg, var(--color-paper) 0 18px, rgb(125 46 78 / 0.18) 18px 19px);
+}
+
+.scrap--grid {
+  background-color: var(--color-paper);
+  background-image:
+    linear-gradient(rgb(196 70 111 / 0.16) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(196 70 111 / 0.16) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+
+.scrap--pink {
+  background-color: var(--color-rosa-light);
+  background-image: var(--grain);
+}
+
+/* --------------------------------------------------------------------------
+   Títulos sobre tira negra, como un recorte de revista
+   -------------------------------------------------------------------------- */
+
+.strip {
+  display: inline-block;
+  padding: 0.02em 0.22em 0.08em;
+  background: var(--color-ink);
+  color: var(--color-paper);
+  clip-path: polygon(0 6%, 2% 0, 98% 3%, 100% 0, 99% 48%, 100% 96%, 97% 100%, 3% 97%, 1% 100%, 1.5% 52%);
+  rotate: -1.2deg;
+}
+
+.strip--pink {
+  color: var(--color-rosa);
+}
+
+/* --------------------------------------------------------------------------
+   Hero
+   -------------------------------------------------------------------------- */
+
+.hero__art {
+  --mx: 0;
+  --my: 0;
+}
+
+.depth {
+  transform: translate3d(calc(var(--mx) * var(--d, 0) * 1px), calc(var(--my) * var(--d, 0) * 1px), 0);
+  transition: transform 0.5s var(--ease-paper);
+}
+
+.hero__prints {
+  pointer-events: none;
+}
+
+.hero__prints .polaroid {
+  pointer-events: auto;
+}
+
+.hero__abril > span {
+  display: inline-block;
+  transition: translate 0.35s cubic-bezier(0.3, 1.6, 0.5, 1), rotate 0.35s ease, color 0.2s ease;
+}
+
+@media (hover: hover) {
+  .hero__abril > span:hover {
+    translate: 0 -0.06em;
+    rotate: calc((var(--i) - 2) * 1.4deg);
+    color: var(--color-rose-deep);
+  }
+}
+
+.hero__abril {
+  white-space: nowrap;
+  pointer-events: auto;
+}
+
+.hero__scrap--a {
+  left: calc(4 * var(--u));
+  top: calc(146 * var(--u));
+  width: calc(150 * var(--u));
+  height: calc(150 * var(--u));
+  rotate: 5deg;
+}
+
+.hero__scrap--b {
+  left: calc(26 * var(--u));
+  top: calc(270 * var(--u));
+  width: calc(150 * var(--u));
+  height: calc(120 * var(--u));
+  rotate: -6deg;
+}
+
+.hero__scrap--c {
+  display: none;
+}
+
+.polaroid__bow {
+  position: absolute;
+  left: 50%;
+  top: -1.5rem;
+  z-index: 2;
+  width: 3rem;
+  translate: -50% 0;
+}
+
+.hero__print--b .polaroid__photo img {
+  filter: saturate(1.05);
+}
+
+.hero__deco--c {
+  left: calc(290 * var(--u));
+  top: calc(124 * var(--u));
+  width: calc(36 * var(--u));
+}
+
+.hero__deco--g {
+  right: calc(10 * var(--u));
+  top: calc(240 * var(--u));
+  width: calc(30 * var(--u));
+}
+
+.hero__deco--h {
+  left: calc(6 * var(--u));
+  top: calc(390 * var(--u));
+  z-index: 6;
+  width: calc(32 * var(--u));
+}
+
+.hero__deco--i {
+  right: calc(16 * var(--u));
+  top: calc(460 * var(--u));
+  width: calc(24 * var(--u));
+  color: var(--color-paper);
+}
+
+.hero__deco--j {
+  left: calc(150 * var(--u));
+  top: calc(520 * var(--u));
+  z-index: 6;
+  width: calc(40 * var(--u));
+}
+
+.hero__deco--k {
+  left: calc(120 * var(--u));
+  top: calc(138 * var(--u));
+  z-index: 2;
+  width: calc(58 * var(--u));
+  color: var(--color-rose-deep);
+}
+
+.hero__deco--l,
+.hero__deco--m,
+.hero__apps {
+  display: none;
+}
+
+.hero__clasp {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% - 1.05rem);
+  z-index: 2;
+  width: 1.7rem;
+  translate: -50% 0;
+  filter: drop-shadow(0 2px 2px rgb(23 19 20 / 0.3));
+}
+
+.hero__lanyard {
+  bottom: calc(100% + 1.8rem);
+  background: radial-gradient(circle, var(--color-paper) 0 2.4px, transparent 2.8px) 0 0 / 9px 9px, var(--color-rose-deep);
+}
+
+@media (min-width: 1024px) {
+  .hero__scrap--a {
+    left: calc(46 * var(--u));
+    top: calc(40 * var(--u));
+    width: calc(250 * var(--u));
+    height: calc(270 * var(--u));
+    rotate: -9deg;
+  }
+
+  .hero__scrap--b {
+    left: calc(430 * var(--u));
+    top: calc(64 * var(--u));
+    width: calc(236 * var(--u));
+    height: calc(250 * var(--u));
+    rotate: 5deg;
+  }
+
+  .hero__scrap--c {
+    display: block;
+    left: calc(520 * var(--u));
+    top: calc(610 * var(--u));
+    width: calc(280 * var(--u));
+    height: calc(200 * var(--u));
+    rotate: -5deg;
+  }
+
+  .hero__deco--c {
+    left: calc(1078 * var(--u));
+    top: calc(24 * var(--u));
+    width: calc(66 * var(--u));
+  }
+
+  .hero__deco--g {
+    left: calc(678 * var(--u));
+    right: auto;
+    top: calc(236 * var(--u));
+    width: calc(72 * var(--u));
+  }
+
+  .hero__deco--h {
+    left: calc(20 * var(--u));
+    top: calc(330 * var(--u));
+    width: calc(56 * var(--u));
+  }
+
+  .hero__deco--i {
+    left: calc(752 * var(--u));
+    right: auto;
+    top: calc(316 * var(--u));
+    width: calc(34 * var(--u));
+    color: var(--color-rose-deep);
+  }
+
+  .hero__deco--j {
+    left: calc(246 * var(--u));
+    top: calc(-8 * var(--u));
+    z-index: 5;
+    width: calc(62 * var(--u));
+  }
+
+  .hero__deco--k {
+    left: calc(556 * var(--u));
+    top: calc(684 * var(--u));
+    z-index: 2;
+    width: calc(130 * var(--u));
+  }
+
+  .hero__deco--l {
+    display: block;
+    left: calc(742 * var(--u));
+    top: calc(262 * var(--u));
+    width: calc(40 * var(--u));
+    color: var(--color-ink);
+    rotate: 24deg;
+  }
+
+  .hero__deco--m {
+    display: block;
+    left: calc(1262 * var(--u));
+    top: calc(768 * var(--u));
+    width: calc(50 * var(--u));
+    rotate: 14deg;
+  }
+
+  .hero__apps {
+    position: absolute;
+    display: flex;
+    left: calc(1112 * var(--u));
+    top: calc(92 * var(--u));
+    z-index: 2;
+    flex-direction: column;
+    gap: calc(8 * var(--u));
+    rotate: -6deg;
+  }
+
+  .hero__apps > span {
+    display: grid;
+    width: calc(62 * var(--u));
+    height: calc(62 * var(--u));
+    place-items: center;
+    border: calc(3 * var(--u)) solid var(--color-paper);
+    border-radius: calc(14 * var(--u));
+    background: var(--color-rosa);
+    box-shadow: var(--shadow-paper);
+    color: var(--color-paper);
+  }
+
+  .hero__apps .social-icon {
+    width: calc(34 * var(--u));
+    height: calc(34 * var(--u));
+  }
+
+  .hero__phone {
+    top: calc(196 * var(--u));
+  }
+
+  .hero__clasp {
+    bottom: calc(100% - 22 * var(--u));
+    width: calc(38 * var(--u));
+  }
+
+  .hero__lanyard {
+    bottom: calc(100% + 36 * var(--u));
+    height: calc(110 * var(--u));
+  }
+
+  .polaroid__bow {
+    width: calc(70 * var(--u));
+  }
+
+  .hero__print--a .polaroid__bow,
+  .hero__print .polaroid__tape {
+    top: calc(-14 * var(--u));
+  }
+}
+
+/* --------------------------------------------------------------------------
+   N° 01 UGC
+   -------------------------------------------------------------------------- */
+
+.ugc__lead {
+  position: relative;
+}
+
+.ugc__scrap {
+  left: 34%;
+  top: 2.6rem;
+  width: 55%;
+  height: 74%;
+  rotate: 3deg;
+}
+
+.ugc__title {
+  position: relative;
+}
+
+.ugc__meaning {
+  position: relative;
+}
+
+.ugc__meaning .strip {
+  color: var(--color-rosa);
+  font-size: 0.82em;
+}
+
+.ugc__aside > .polaroid:first-of-type .polaroid__caption {
+  padding-left: 0.5rem;
+  text-align: left;
+}
+
+.ugc__bubble {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 3.6rem;
+}
+
+.ugc__star {
+  position: absolute;
+  right: 28%;
+  bottom: -1.4rem;
+  width: 2.2rem;
+}
+
+.ugc__aside-scrap {
+  inset: 1.2rem -0.4rem auto auto;
+  width: 66%;
+  height: 80%;
+  rotate: 5deg;
+}
+
+.ugc__aside .ugc__mini {
+  position: absolute;
+  right: 0;
+  bottom: -1rem;
+  z-index: 2;
+  width: 40%;
+  padding: 0.3rem 0.3rem 1rem;
+}
+
+.ugc__heart {
+  position: absolute;
+  left: 44%;
+  top: -0.8rem;
+  z-index: 3;
+  width: 2.2rem;
+  rotate: 12deg;
+}
+
+.ugc__phone {
+  position: absolute;
+  left: -0.3rem;
+  bottom: -1.2rem;
+  z-index: 3;
+  width: 1.9rem;
+  rotate: -10deg;
+}
+
+.ugc__sticky {
+  position: relative;
+  z-index: 1;
+}
+
+@media (min-width: 1100px) {
+  .ugc__aside .ugc__mini {
+    right: -1.4rem;
+    bottom: 3.2rem;
+    width: 56%;
+  }
+
+  .ugc__phone {
+    left: -2.2rem;
+    bottom: 12rem;
+    width: 2.4rem;
+  }
+
+  .ugc__arrow {
+    bottom: 0.4rem;
+  }
+
+  .ugc__flower {
+    bottom: -3.4rem;
+    left: -1rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   N° 02 ¿Por qué trabajar conmigo?
+   -------------------------------------------------------------------------- */
+
+.why__title em.strip {
+  padding: 0 0.2em 0.06em;
+  font-size: 1.08em;
+  line-height: 1;
+  color: var(--color-rosa);
+}
+
+.why__accent {
+  position: absolute;
+  left: 0;
+  top: 3.4rem;
+  display: none;
+  width: 2rem;
+  rotate: -28deg;
+}
+
+.why__camera {
+  position: absolute;
+  right: 0.2rem;
+  bottom: 0.1rem;
+  width: 4.2rem;
+  rotate: 8deg;
+}
+
+.why__scrap,
+.why__print {
+  display: none;
+}
+
+.why__bow {
+  position: absolute;
+  left: 50%;
+  bottom: -1.2rem;
+  width: 3.2rem;
+  translate: -50% 0;
+  z-index: 3;
+}
+
+.why__glitter {
+  position: absolute;
+  left: 0;
+  bottom: 30%;
+  width: 2.2rem;
+}
+
+.why__brand {
+  position: relative;
+}
+
+.why__brand-star {
+  position: absolute;
+  right: 0;
+  top: -2.4rem;
+  width: 2.8rem;
+  rotate: 12deg;
+}
+
+.note {
+  overflow: visible;
+}
+
+.note__tape {
+  left: 50%;
+  top: -0.7rem;
+  translate: -50% 0;
+  width: 4.2rem;
+  height: 1.2rem;
+  rotate: -3deg;
+}
+
+.note__sticker {
+  position: absolute;
+  right: 0.5rem;
+  top: 0.5rem;
+  width: 1.5rem;
+  color: var(--color-rose-deep);
+}
+
+/* Cada nota es un papel distinto */
+.note:nth-child(2) {
+  border-radius: 1.3rem 1.3rem 1.3rem 0.2rem;
+  background-color: var(--color-rosa-light);
+}
+
+.note:nth-child(4) {
+  background-image:
+    repeating-linear-gradient(180deg, transparent 0 22px, rgb(125 46 78 / 0.14) 22px 23px),
+    var(--grain);
+}
+
+@media (min-width: 1100px) {
+  .why__feature {
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.34fr) minmax(0, 0.7fr);
+    gap: 1.5rem;
+  }
+
+  .why__head {
+    grid-column: 1;
+  }
+
+  .why__scrap {
+    display: block;
+    grid-column: 2 / span 2;
+    right: 6%;
+    top: 1rem;
+    width: 58%;
+    height: 90%;
+    rotate: 3deg;
+  }
+
+  .why__print {
+    display: block;
+    grid-column: 2;
+    align-self: start;
+    position: relative;
+    z-index: 2;
+    margin: 3rem -3.5rem 0 0.5rem;
+  }
+
+  .why__video {
+    grid-column: 3;
+    grid-row: 1;
+    position: relative;
+    z-index: 1;
+  }
+
+  .why__accent {
+    display: block;
+  }
+
+  .why__camera {
+    right: 0;
+    bottom: 1.5rem;
+    width: 5.4rem;
+  }
+
+  .why__bow {
+    left: 29%;
+    bottom: 3.5rem;
+    width: 4.4rem;
+  }
+
+  .why__glitter {
+    left: 58%;
+    bottom: 6%;
+    width: 3rem;
+  }
+
+  .why__heart {
+    right: 38%;
+    bottom: 22%;
+  }
+
+  .why__spark {
+    right: 37%;
+    top: 5%;
+  }
+
+  .note__sticker {
+    right: 1rem;
+    top: 1rem;
+    width: 2.8rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   N° 03 Ejemplos: ventana, carpetas y recortes
+   -------------------------------------------------------------------------- */
+
+.examples__collage {
+  display: none;
+}
+
+.examples__title em {
+  paint-order: stroke fill;
+  -webkit-text-stroke: 0.05em var(--color-paper);
+  filter: drop-shadow(0 3px 3px rgb(92 40 62 / 0.22));
+}
+
+.examples__glitter {
+  position: absolute;
+  right: 12%;
+  top: 4.4rem;
+  width: 2.2rem;
+}
+
+.examples__heart {
+  position: absolute;
+  right: 1%;
+  top: 44%;
+  width: 2.4rem;
+  rotate: 12deg;
+}
+
+.feed-window {
+  position: absolute;
+  right: 3rem;
+  top: 0;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 0.6rem;
+  background: var(--color-paper);
+  box-shadow: var(--shadow-lift);
+  rotate: 2deg;
+}
+
+.feed-window__bar {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.45rem 0.6rem;
+  background: var(--color-rosa-light);
+}
+
+.feed-window__bar span {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: var(--color-rose-deep);
+}
+
+.feed-window__bar span:nth-child(2) {
+  background: var(--color-butter);
+}
+
+.feed-window__bar span:nth-child(3) {
+  background: var(--color-rosa-old);
+}
+
+.feed-window__bar p {
+  margin: 0 auto;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.feed-window__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 3px;
+  padding: 3px;
+}
+
+.feed-window__grid span {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: var(--color-rosa-light);
+}
+
+.examples__print {
+  position: absolute;
+  right: -1rem;
+  bottom: 0.5rem;
+  z-index: 2;
+  width: 44%;
+}
+
+.examples__bow {
+  position: absolute;
+  left: -1rem;
+  top: -1.6rem;
+  z-index: 3;
+  width: 3.6rem;
+}
+
+.examples__cursor {
+  position: absolute;
+  left: 20%;
+  right: auto;
+  top: 58%;
+  z-index: 3;
+  width: 2rem;
+}
+
+/* Índice como carpetas de escritorio */
+.examples__index {
+  position: relative;
+  border-top: 0;
+}
+
+.examples__index ol {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem 0;
+}
+
+.examples__index li {
+  flex: 0 0 33.33%;
+  min-width: 0;
+}
+
+.examples__index a.folder-link {
+  display: flex;
+  min-height: 0;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem;
+  border: 0;
+  text-align: center;
+  transition: translate 0.3s cubic-bezier(0.3, 1.6, 0.5, 1);
+}
+
+.folder-link__icon {
+  position: relative;
+  display: grid;
+  width: clamp(3.8rem, 18vw, 5.4rem);
+  aspect-ratio: 5 / 4;
+  place-items: center;
+  border-radius: 0.2rem 0.5rem 0.5rem 0.5rem;
+  background: linear-gradient(180deg, #f6b6cb, var(--color-rosa-old));
+  box-shadow: 0 8px 12px -8px rgb(92 40 62 / 0.6), inset 0 2px 0 rgb(255 255 255 / 0.4);
+  transition: rotate 0.3s ease;
+}
+
+.folder-link__icon::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 100%;
+  width: 44%;
+  height: 12%;
+  border-radius: 0.3rem 0.5rem 0 0;
+  background: #f6b6cb;
+}
+
+.folder-link__name {
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+@media (hover: hover) {
+  .examples__index a.folder-link:hover {
+    padding-left: 0.3rem;
+    translate: 0 -5px;
+  }
+
+  .folder-link:hover .folder-link__icon {
+    rotate: -4deg;
+  }
+}
+
+@media (min-width: 768px) {
+  .examples__index li {
+    flex: 1 1 0;
+  }
+
+  .examples__index a.folder-link {
+    border: 0;
+  }
+}
+
+@media (min-width: 1100px) {
+  .examples__title {
+    font-size: min(10.4vw, 9.4rem);
+  }
+
+  .examples__collage {
+    position: absolute;
+    display: block;
+    right: 2rem;
+    top: 4.2rem;
+    width: min(30vw, 27rem);
+    height: 25rem;
+  }
+
+  .examples__head {
+    padding-bottom: 3rem;
+  }
+
+  .examples__heart {
+    right: auto;
+    left: 44%;
+    top: 3.8rem;
+  }
+
+  .examples__glitter {
+    right: auto;
+    left: 62%;
+    top: 21rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Páginas de categoría
+   -------------------------------------------------------------------------- */
+
+.spread__stickers {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.spread__float {
+  position: absolute;
+}
+
+.spread__float--a {
+  right: 5%;
+  top: 1.1rem;
+  width: 1.5rem;
+  color: var(--color-rose-deep);
+}
+
+.spread__float--b {
+  right: 16%;
+  top: 2.6rem;
+  width: 1.8rem;
+}
+
+.spread__float--c {
+  left: 54%;
+  top: 1.2rem;
+  width: 1.4rem;
+  color: var(--color-rose-deep);
+  rotate: 18deg;
+}
+
+.spread__float--d {
+  right: 6%;
+  bottom: 1.1rem;
+  width: 1.7rem;
+  rotate: 12deg;
+}
+
+/* Cada página reparte sus stickers distinto, para que no se note el molde */
+.spread--experiencias .spread__float--a { right: auto; left: 4%; top: auto; bottom: 1.4rem; }
+.spread--experiencias .spread__float--c { left: auto; right: 34%; top: auto; bottom: 1rem; rotate: -20deg; }
+.spread--experiencias .spread__float--d { right: 42%; bottom: auto; top: 1rem; }
+.spread--recomendacion .spread__float--b { right: auto; left: 3%; top: auto; bottom: 1.2rem; }
+.spread--recomendacion .spread__float--c { left: 46%; top: auto; bottom: 1.1rem; }
+.spread--accesorios .spread__float--a { color: var(--color-paper); }
+.spread--accesorios .spread__float--c { left: 3%; top: auto; bottom: 1rem; }
+.spread--unboxing .spread__float--a { right: 40%; top: 1.6rem; }
+.spread--unboxing .spread__float--b { right: 3%; top: auto; bottom: 4.4rem; }
+.spread--unboxing .spread__float--c { left: 2%; top: 1rem; }
+.spread--make-up .spread__float--a { right: auto; left: 44%; top: auto; bottom: 1.2rem; }
+.spread--make-up .spread__float--c { left: auto; right: 3%; top: 1.4rem; rotate: 30deg; }
+.spread--skincare .spread__float--b { right: 34%; top: 1.4rem; }
+.spread--skincare .spread__float--c { left: 2%; top: auto; bottom: 1rem; rotate: -30deg; }
+.spread--skincare .spread__float--d { right: 38%; bottom: 1.6rem; }
+
+.spread--recomendacion .spread__float--a,
+.spread--recomendacion .spread__float--c {
+  color: var(--color-rosa);
+}
+
+.spread__grid {
+  z-index: 1;
+}
+
+.spread__extras {
+  display: none;
+}
+
+.tape-measure {
+  display: block;
+  height: 1.4rem;
+  background:
+    repeating-linear-gradient(90deg, var(--color-ink) 0 1px, transparent 1px 8px) 0 100% / 100% 40% no-repeat,
+    repeating-linear-gradient(90deg, var(--color-ink) 0 1.5px, transparent 1.5px 40px) 0 100% / 100% 70% no-repeat,
+    var(--color-butter);
+  box-shadow: var(--shadow-paper);
+}
+
+.packing-tape {
+  display: block;
+  height: 2rem;
+  background: repeating-linear-gradient(115deg, rgb(232 143 174 / 0.92) 0 18px, rgb(251 223 232 / 0.92) 18px 36px);
+  box-shadow: 0 1px 2px rgb(23 19 20 / 0.14);
+}
+
+.postmark {
+  --ring: var(--color-cream);
+  display: grid;
+  width: 7.4rem;
+  height: 7.4rem;
+  align-content: center;
+  justify-items: center;
+  gap: 0.15rem;
+  border: 2px solid var(--color-wine);
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px var(--ring), 0 0 0 6px var(--color-wine);
+  color: var(--color-wine);
+  font-size: 0.64rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  rotate: -12deg;
+}
+
+.postmark strong {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.ship-label {
+  width: min(100%, 19rem);
+  padding: 0.8rem 0.9rem;
+  border: 2px solid var(--color-ink);
+  background-color: var(--color-paper);
+  background-image: var(--grain);
+  box-shadow: var(--shadow-paper);
+  font-size: 0.95rem;
+  font-weight: 700;
+  rotate: -2deg;
+}
+
+.ship-label p {
+  margin: 0 0 0.3rem;
+  font-family: var(--font-hand);
+  font-size: 1.5rem;
+  line-height: 1.1;
+}
+
+.ship-label span {
+  display: inline-block;
+  margin-right: 0.3rem;
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.ship-label__code {
+  display: block;
+  width: 100%;
+  height: 1.7rem;
+  margin-top: 0.5rem;
+}
+
+.spread__heart {
+  display: none;
+}
+
+.spread--accesorios {
+  --chain: var(--color-wine);
+}
+
+.spread__chain {
+  display: block;
+  height: 0.6rem;
+  background: radial-gradient(circle at 50% 50%, transparent 0 2.4px, var(--chain) 2.5px 3.6px, transparent 3.7px) 0 0 / 11px 100%;
+}
+
+@media (min-width: 768px) {
+  .spread__extras {
+    position: relative;
+    display: block;
+    min-height: 15rem;
+    margin-top: 1.4rem;
+  }
+
+  .spread__extras .polaroid {
+    position: absolute;
+    left: 0.5rem;
+    top: 1rem;
+    z-index: 2;
+    width: min(62%, 11.5rem);
+  }
+
+  .spread__scrap {
+    left: 6%;
+    top: 0;
+    width: 62%;
+    height: 90%;
+    rotate: 4deg;
+  }
+
+  .spread__hanger {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 4.6rem;
+    rotate: 8deg;
+  }
+
+  .spread__mini {
+    position: absolute;
+    right: 6%;
+    bottom: 1.4rem;
+    z-index: 3;
+    width: 2.6rem;
+  }
+
+  .tape-measure {
+    position: absolute;
+    left: -2rem;
+    bottom: -1.6rem;
+    z-index: 3;
+    width: 74%;
+    rotate: -5deg;
+  }
+
+  .spread__extras--experiencias {
+    min-height: 11rem;
+    margin-top: 0;
+  }
+
+  .spread__pin {
+    position: absolute;
+    left: 0.5rem;
+    top: 0;
+    width: 3.6rem;
+  }
+
+  .postmark {
+    position: absolute;
+    right: 0;
+    top: 2.6rem;
+  }
+
+  .spread__extras--experiencias .spread__mini {
+    right: 58%;
+    bottom: 0;
+  }
+
+  .spread__bubble {
+    position: absolute;
+    left: 46%;
+    top: 0.5rem;
+    z-index: 3;
+    width: 5.2rem;
+  }
+
+  .spread__swirl {
+    position: absolute;
+    left: 48%;
+    bottom: 1rem;
+    width: 10rem;
+    color: var(--color-rosa);
+  }
+
+  .spread__extras--recomendacion .spread__mini {
+    right: auto;
+    left: 74%;
+    top: 0;
+    bottom: auto;
+  }
+
+  .spread__extras .spread__second {
+    left: 34%;
+    top: 2.4rem;
+    z-index: 3;
+    width: min(46%, 10rem);
+  }
+
+  .spread__extras--recomendacion .spread__scrap {
+    width: 74%;
+  }
+
+  .spread__extras--recomendacion .spread__bubble {
+    left: 66%;
+    top: 3rem;
+    z-index: 4;
+  }
+
+  .spread__extras--recomendacion .spread__swirl {
+    left: 70%;
+    bottom: 2rem;
+  }
+
+  .spread__extras--unboxing .ship-label {
+    position: relative;
+    z-index: 2;
+  }
+
+  .spread__parcel {
+    position: absolute;
+    right: 4%;
+    top: 0;
+    z-index: 3;
+    width: 7.5rem;
+  }
+
+  .packing-tape {
+    position: absolute;
+    left: -2%;
+    bottom: 1.4rem;
+    width: 104%;
+    rotate: -2deg;
+  }
+
+  .spread__extras--unboxing {
+    min-height: 13rem;
+  }
+
+  .spread__lipstick {
+    position: absolute;
+    left: 44%;
+    top: 0.5rem;
+    z-index: 3;
+    width: 6rem;
+    rotate: 14deg;
+  }
+
+  .spread__kiss {
+    position: absolute;
+    left: 70%;
+    top: 6.5rem;
+    width: 6.4rem;
+    rotate: -14deg;
+    filter: none;
+  }
+
+  .spread__extras--make-up .spread__mini {
+    left: 0;
+    top: -1rem;
+    right: auto;
+    bottom: auto;
+    width: 3.2rem;
+  }
+
+  .spread__serum {
+    position: absolute;
+    left: 36%;
+    top: 0.5rem;
+    z-index: 3;
+    width: 5rem;
+    rotate: 10deg;
+  }
+
+  .spread__drops {
+    position: absolute;
+    left: 56%;
+    top: 5rem;
+    width: 5.2rem;
+  }
+
+  .spread--skincare .spread__scrap {
+    width: 56%;
+  }
+
+  .spread__extras--skincare .spread__mini {
+    left: 34%;
+    bottom: 1rem;
+    right: auto;
+  }
+
+  .spread__float--a {
+    width: 2rem;
+  }
+
+  .spread__float--b {
+    width: 2.6rem;
+  }
+
+  .spread__float--c {
+    width: 1.9rem;
+    left: 30%;
+  }
+
+  .spread__float--d {
+    width: 2.4rem;
+  }
+}
+
+/* Etiquetas de la grilla: la cinta se despega apenas al pasar el mouse */
+@media (hover: hover) {
+  .vtile__tape {
+    transition: rotate 0.35s ease, translate 0.35s ease;
+  }
+
+  .vtile:hover .vtile__tape {
+    rotate: 2deg;
+    translate: -50% -3px;
+  }
+}
+
+@media (min-width: 768px) {
+  .spread__extras--accesorios {
+    min-height: 8rem;
+  }
+
+  .spread__bag {
+    position: absolute;
+    right: 3rem;
+    top: 0;
+    z-index: 2;
+    width: 6.4rem;
+    rotate: -8deg;
+  }
+
+  .spread__earrings {
+    position: absolute;
+    right: 11rem;
+    top: 0.6rem;
+    z-index: 2;
+    width: 4rem;
+    rotate: 8deg;
+  }
+
+  .spread__extras--accesorios .spread__mini {
+    right: 0.5rem;
+    bottom: auto;
+    top: 0;
+  }
+
+  .spread__chain {
+    position: absolute;
+    right: 0;
+    top: 6.8rem;
+    width: 100%;
+    max-width: 17rem;
+    rotate: -3deg;
+  }
+}
+
+@media (min-width: 1100px) {
+  .spread--moda .spread__extras {
+    flex: 0 0 min(40%, 27rem);
+    min-height: 15rem;
+    margin: 0;
+  }
+
+  .spread--moda .spread__extras .polaroid {
+    width: 9.5rem;
+  }
+
+  .spread--moda .spread__hanger {
+    right: 3rem;
+    top: 0.6rem;
+  }
+
+  .spread--moda .spread__scrap {
+    top: 0.4rem;
+    width: 72%;
+    height: 92%;
+  }
+
+  .spread--moda .tape-measure {
+    left: 34%;
+    bottom: 2.6rem;
+    width: 66%;
+  }
+
+  .spread--moda .spread__mini {
+    right: 2rem;
+    bottom: 4.6rem;
+  }
+
+  .spread__extras--experiencias {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: start;
+    min-height: 19rem;
+  }
+
+  .spread__extras--experiencias .postmark {
+    position: absolute;
+    right: auto;
+    left: 0;
+    top: 5.4rem;
+    width: 6.8rem;
+    height: 6.8rem;
+  }
+
+  .spread__extras--experiencias .spread__pin {
+    left: 1.5rem;
+  }
+
+  .spread__extras--experiencias .spread__mini {
+    left: 2rem;
+    right: auto;
+    bottom: 0;
+  }
+
+  .spread--recomendacion .spread__extras {
+    min-height: 17rem;
+  }
+
+  .spread--unboxing .spread__extras,
+  .spread--make-up .spread__extras {
+    min-height: 16rem;
+  }
+
+  .spread--accesorios .spread__extras {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 22rem;
+    min-height: 0;
+    margin: 0;
+  }
+
+  .spread--skincare .spread__extras {
+    min-height: 17rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   N° 04 Trabajemos juntos: carpeta con la ficha y dos recortes
+   -------------------------------------------------------------------------- */
+
+.together__title em.strip {
+  display: inline-block;
+  margin-left: 0.1em;
+  padding: 0 0.2em 0.06em;
+  font-size: 1.02em;
+  line-height: 1;
+  color: var(--color-rosa);
+}
+
+.together__side {
+  position: relative;
+  margin: 1.6rem 0.25rem 0;
+  min-height: 25rem;
+}
+
+.together__folder {
+  position: absolute;
+  inset: 2.4rem 0 0 0;
+  background-color: var(--color-rosa-old);
+  background-image: var(--grain);
+  box-shadow: var(--shadow-paper);
+  rotate: -1.5deg;
+}
+
+.together__folder::before {
+  content: "";
+  position: absolute;
+  right: 1.2rem;
+  bottom: 100%;
+  width: 34%;
+  height: 1rem;
+  background: inherit;
+  clip-path: polygon(0 100%, 8% 0, 92% 0, 100% 100%);
+}
+
+.together__scrap {
+  right: 0.6rem;
+  top: 3.4rem;
+  width: 50%;
+  height: 44%;
+  rotate: 4deg;
+}
+
+.together__print {
+  position: absolute;
+  z-index: 2;
+  padding: 0.35rem 0.35rem 1.2rem;
+}
+
+.together__print--a {
+  left: 0.6rem;
+  top: 0.8rem;
+  width: 44%;
+}
+
+.together__print--b {
+  right: 0.4rem;
+  top: 1.4rem;
+  width: 42%;
+}
+
+.together__info {
+  position: absolute;
+  left: 50%;
+  bottom: 0.6rem;
+  z-index: 3;
+  width: min(92%, 19rem);
+  translate: -50% 0;
+  rotate: 1.4deg;
+}
+
+.info-card {
+  padding: 0.75rem 0.85rem 0.6rem;
+  background-color: var(--color-paper);
+  background-image: var(--grain);
+  box-shadow: var(--shadow-lift);
+}
+
+.info-card__clip {
+  position: absolute;
+  right: 1.2rem;
+  top: -1.2rem;
+  width: 1rem;
+  color: #8d8589;
+}
+
+.info-card__title {
+  margin: 0 0 0.25rem;
+  font-size: 1.5rem;
+  font-weight: 900;
+  letter-spacing: -0.05em;
+  line-height: 1;
+}
+
+.info-card__title em {
+  color: var(--color-rose-deep);
+  font-size: 1.16em;
+}
+
+.info-card dl {
+  margin: 0;
+}
+
+.info-card dl > div {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  padding: 0.14rem 0;
+  border-bottom: 1px dashed rgb(125 46 78 / 0.4);
+}
+
+.info-card dt {
+  flex: 0 0 4.2rem;
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.info-card dd {
+  margin: 0;
+  min-width: 0;
+  font-family: var(--font-hand);
+  font-size: 1.22rem;
+  font-weight: 600;
+  line-height: 1.1;
+  overflow-wrap: anywhere;
+}
+
+.together__sticker {
+  position: absolute;
+  left: 44%;
+  top: 5.6rem;
+  z-index: 3;
+  width: 2.3rem;
+  rotate: -10deg;
+}
+
+.together__glitter {
+  position: absolute;
+  left: 0.2rem;
+  bottom: 8rem;
+  z-index: 3;
+  width: 2rem;
+}
+
+.together__swirl {
+  position: absolute;
+  right: 0.3rem;
+  bottom: 9rem;
+  z-index: 2;
+  width: 5rem;
+  color: var(--color-paper);
+}
+
+.together__bow {
+  position: absolute;
+  left: 0.2rem;
+  top: -1.1rem;
+  width: 3.2rem;
+  rotate: -12deg;
+}
+
+.together__spark {
+  bottom: 1rem;
+}
+
+.together__sheet {
+  background-image:
+    repeating-linear-gradient(180deg, transparent 0 31px, rgb(196 70 111 / 0.06) 31px 32px),
+    var(--grain);
+}
+
+@media (min-width: 640px) and (max-width: 1099px) {
+  .together__side {
+    max-width: 32rem;
+    margin-inline: auto;
+  }
+}
+
+@media (min-width: 1100px) {
+  .together__sheet {
+    min-height: 40rem;
+  }
+
+  .together__side {
+    position: absolute;
+    right: 2.2rem;
+    top: 13rem;
+    width: 22rem;
+    height: 27rem;
+    margin: 0;
+  }
+
+  .together__seal {
+    right: 22.5rem;
+    top: 35rem;
+    z-index: 4;
+  }
+
+  .together__barcode {
+    right: auto;
+    left: 20rem;
+    bottom: 3.6rem;
+  }
+
+  .together__bow {
+    left: 1.6rem;
+    top: -1.5rem;
+    width: 4.2rem;
+  }
+
+  .together__spark {
+    bottom: auto;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   N° 05 Contacto: tira final de fotos
+   -------------------------------------------------------------------------- */
+
+.contact {
+  background-image: var(--grain);
+}
+
+.contact__envelope {
+  position: absolute;
+  right: 0.25rem;
+  top: 3.2rem;
+  width: 3.6rem;
+  rotate: 10deg;
+}
+
+.contact__heart {
+  position: absolute;
+  right: 3.4rem;
+  top: 0.4rem;
+  width: 1.8rem;
+  rotate: -12deg;
+}
+
+.contact__flower {
+  top: -1rem;
+}
+
+.contact__strip {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-top: 2.6rem;
+}
+
+.contact__frame {
+  flex: 0 0 34%;
+  margin-inline: -1.5%;
+  padding: 0.3rem 0.3rem 0.9rem;
+  background: var(--color-paper);
+  box-shadow: 0 10px 18px -10px rgb(0 0 0 / 0.7);
+  rotate: var(--r, 0deg);
+}
+
+.contact__frame > span {
+  position: relative;
+  display: block;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: var(--color-rosa-light);
+}
+
+.contact__frame:nth-child(n + 4) {
+  display: none;
+}
+
+.contact__glitter {
+  position: absolute;
+  left: 2%;
+  top: -1.2rem;
+  width: 2.2rem;
+}
+
+.contact__star {
+  position: absolute;
+  right: 3%;
+  bottom: -0.8rem;
+  width: 2.2rem;
+}
+
+@media (min-width: 768px) {
+  .contact__frame {
+    flex-basis: 19%;
+  }
+
+  .contact__frame:nth-child(n + 4) {
+    display: block;
+  }
+}
+
+@media (min-width: 1024px) {
+  .contact__strip {
+    margin-top: 3.5rem;
+  }
+
+  .contact__envelope {
+    right: 39%;
+    top: 7rem;
+    width: 5.4rem;
+  }
+
+  .contact__heart {
+    right: 37%;
+    top: 3.4rem;
+    width: 2.4rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Movimiento: todo con transform/opacity y siempre apagable
+   -------------------------------------------------------------------------- */
+
+.draw {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+}
+
+.reveal .pop {
+  transition: scale 0.6s cubic-bezier(0.3, 1.7, 0.5, 1) 0.3s, opacity 0.3s ease 0.3s;
+}
+
+.reveal:not(.is-visible) .pop {
+  scale: 0.4;
+  opacity: 0;
+}
+
+.reveal .polaroid,
+.reveal .note {
+  transition-delay: 0s;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .bob {
+    animation: bob 7s ease-in-out infinite alternate;
+  }
+
+  .bob:nth-of-type(2n) {
+    animation-duration: 9s;
+    animation-delay: -3s;
+  }
+
+  .twinkle {
+    animation: twinkle 5s ease-in-out infinite;
+  }
+
+  .twinkle:nth-of-type(2n) {
+    animation-delay: -2s;
+  }
+
+  .hero__card {
+    transform-origin: 50% -3rem;
+    animation: hero-drop 0.8s var(--ease-paper) 420ms both, card-sway 8s ease-in-out 1.4s infinite alternate;
+  }
+
+  .reveal .draw {
+    transition: stroke-dashoffset 1.6s ease 0.2s;
+  }
+
+  .reveal:not(.is-visible) .draw {
+    stroke-dashoffset: 1;
+  }
+
+  .hero__name::after {
+    content: none;
+  }
+
+  .hero__deco--k .draw {
+    animation: draw-line 1.8s ease 0.7s both;
+  }
+
+  .reveal .polaroid {
+    animation: paper-settle 0.9s var(--ease-paper) both paused;
+  }
+
+  .reveal.is-visible .polaroid {
+    animation-play-state: running;
+  }
+
+  @supports (animation-timeline: view()) {
+    .examples__collage,
+    .spread__extras .polaroid,
+    .together__print,
+    .why__print,
+    .contact__strip {
+      animation: drift linear both;
+      animation-timeline: view();
+      animation-range: entry 0% exit 100%;
+    }
+  }
+
+  @media (hover: hover) {
+    .sticker-hover:hover {
+      animation: wiggle 0.5s ease;
+    }
+  }
+}
+
+@keyframes bob {
+  to {
+    transform: translateY(-7px) rotate(2.5deg);
+  }
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(0.82) rotate(10deg);
+    opacity: 0.72;
+  }
+}
+
+@keyframes card-sway {
+  from {
+    transform: rotate(-0.9deg);
+  }
+
+  to {
+    transform: rotate(0.9deg);
+  }
+}
+
+@keyframes draw-line {
+  from {
+    stroke-dashoffset: 1;
+  }
+}
+
+@keyframes paper-settle {
+  from {
+    transform: translateY(14px) rotate(3deg) scale(0.97);
+  }
+}
+
+@keyframes drift {
+  from {
+    translate: 0 16px;
+  }
+
+  to {
+    translate: 0 -16px;
+  }
+}
+
+@keyframes wiggle {
+  25% {
+    transform: rotate(-7deg);
+  }
+
+  75% {
+    transform: rotate(7deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal:not(.is-visible) .pop {
+    scale: 1;
+    opacity: 1;
+  }
+
+  .depth {
+    transform: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Mobile: menos piezas, siempre lejos de texto y botones
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 1099px) {
+  .spread__parcel {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1099px) {
+  .spread--moda .tape-measure {
+    bottom: 0.2rem;
+  }
+}
+
+@media (max-width: 767px) {
+  /* En el celular solo se mueve el hero: el resto queda quieto y liviano */
+  main > section:not(.hero) .bob,
+  main > section:not(.hero) .twinkle {
+    animation: none;
+  }
+
+  .ugc__bubble {
+    width: 3rem;
+  }
+
+  .examples__heart,
+  .why__glitter {
+    display: none;
+  }
+
+  .spread__head {
+    padding-right: 2.5rem;
+  }
+
+  .spread--experiencias .spread__head,
+  .spread--recomendacion .spread__head {
+    padding-right: 0;
+  }
+}

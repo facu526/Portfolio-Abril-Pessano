@@ -1,67 +1,74 @@
+import { moodFrames, profile, ugcSection } from "@/lib/content";
 import { FeatureVideoCard } from "./FeatureVideoCard";
 import { RevealSection } from "./RevealSection";
+import { Flower, HandArrow, Sparkle } from "./scrapbook/Decor";
+import { GlitterStar, HeartSticker, PhoneDoodle, SpeechBubble } from "./scrapbook/Stickers";
+import { PageMark } from "./scrapbook/PageMark";
+import { Polaroid } from "./scrapbook/Polaroid";
+import { TornEdge } from "./scrapbook/TornEdge";
 
 export function About() {
   return (
     <RevealSection
       id="que-es-ugc"
-      className="section-padding relative isolate overflow-hidden"
+      className="ugc"
+      edge={<TornEdge color="#fbf3e4" />}
     >
-      <div className="absolute inset-x-0 top-0 -z-10 h-24 bg-gradient-to-b from-transparent to-cream/40" />
-      <span
-        className="sparkle right-[12%] top-20 text-lavender [--size:1.9rem]"
-        aria-hidden="true"
-      />
-      <span
-        className="mini-star left-[8%] bottom-[20%] text-roseglow [--size:0.62rem]"
-        aria-hidden="true"
-      />
-      <span
-        className="silver-star right-[22%] bottom-[18%] [--size:0.9rem]"
-        aria-hidden="true"
-      />
-      <span
-        className="tropical-flower left-[14%] top-[16%] opacity-60"
-        aria-hidden="true"
-      />
-      <span
-        className="tropical-flower flower-hibiscus right-[7%] top-[36%] opacity-55"
-        aria-hidden="true"
-      />
-      <span
-        className="tropical-flower flower-plumeria left-[4%] bottom-[10%] hidden opacity-65 sm:block"
-        aria-hidden="true"
-      />
-      <span
-        className="silver-sprinkles right-[32%] top-[24%]"
-        aria-hidden="true"
-      />
-      <span
-        className="silver-sprinkles left-[27%] bottom-[28%]"
-        aria-hidden="true"
-      />
-      <span
-        className="glitter-burst right-[18%] top-[12%]"
-        aria-hidden="true"
-      />
-      <span
-        className="mirror-ball left-[5%] top-[44%] hidden lg:block"
-        aria-hidden="true"
-      />
+      <div className="shell ugc__grid">
+        <div className="ugc__lead">
+          <PageMark number="01" label={profile.kicker} />
+          <span className="scrap scrap--grid ugc__scrap" aria-hidden="true" />
+          <h2 className="ugc__title">{ugcSection.title}</h2>
+          <p className="ugc__meaning">
+            <em className="t-serif strip">{ugcSection.meaning}</em>
+          </p>
+          <SpeechBubble className="ugc__bubble bob" />
+          <GlitterStar className="ugc__star twinkle" />
+        </div>
 
-      <div className="section-shell">
-        <div className="mx-auto max-w-3xl text-center">
-          <h2 className="display-title text-[clamp(3.25rem,12vw,6.6rem)] text-ink">
-            UGC
-          </h2>
-          <FeatureVideoCard
-            src="/videos/ugc.mp4"
-            poster="/video-posters/ugc.jpg"
-            label="Video UGC de Abril Pessano"
-            className="mt-8 sm:mt-10"
+        <FeatureVideoCard
+          src={ugcSection.video.src}
+          poster={ugcSection.video.poster}
+          label={ugcSection.video.label}
+          tilt={1.6}
+          className="ugc__video"
+        />
+
+        <div className="ugc__aside">
+          <span className="scrap scrap--pink ugc__aside-scrap" aria-hidden="true" />
+          <Polaroid
+            src={moodFrames.ugc}
+            alt="Abril sonriendo mientras habla a cámara"
+            caption="reels + tiktok"
+            tilt={-4}
+            fastener="tape"
+            sizes="(max-width: 767px) 60vw, 22vw"
+            ratio="4 / 5"
+            objectPosition="50% 16%"
           />
+          <Polaroid
+            src={moodFrames.makeupPaleta}
+            alt="Abril mostrando una paleta de maquillaje"
+            tilt={7}
+            fastener="clip"
+            sizes="(max-width: 767px) 34vw, 12vw"
+            ratio="1 / 1"
+            objectPosition="50% 26%"
+            className="ugc__mini"
+          />
+          <HeartSticker className="ugc__heart pop" />
+          <PhoneDoodle className="ugc__phone bob" />
+          <p className="ugc__sticky lift" style={{ "--r": "3deg" } as React.CSSProperties}>
+            {profile.role}
+          </p>
+          <HandArrow className="ugc__arrow" />
+          <Flower className="ugc__flower" />
+          <Sparkle className="ugc__spark" />
         </div>
       </div>
+      <p className="side-label ugc__side" aria-hidden="true">
+        {profile.fullName} — {profile.kicker}
+      </p>
     </RevealSection>
   );
 }

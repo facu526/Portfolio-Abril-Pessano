@@ -1,12 +1,16 @@
 "use client";
 
+import { optimizedPoster } from "@/lib/optimizedPoster";
 import { pauseOtherVideos } from "@/lib/videoControls";
+import { PaperClip, Sparkle } from "./scrapbook/Decor";
 
 type FeatureVideoCardProps = {
   src: string;
   label: string;
   poster?: string;
   className?: string;
+  /** Inclinación en grados. */
+  tilt?: number;
 };
 
 export function FeatureVideoCard({
@@ -14,29 +18,23 @@ export function FeatureVideoCard({
   label,
   poster,
   className = "",
+  tilt = 0,
 }: FeatureVideoCardProps) {
   return (
-    <div className={`relative mx-auto w-full max-w-[25rem] ${className}`}>
-      <div
-        className="absolute -inset-4 rounded-[3rem] bg-gradient-to-br from-peach/[0.45] via-blush/[0.34] to-aqua/[0.32] blur-2xl"
-        aria-hidden="true"
-      />
-      <div className="silver-edge relative overflow-hidden rounded-[2.35rem] border border-white/[0.72] bg-paper/[0.74] p-2.5 shadow-[0_28px_86px_rgba(168,72,115,0.16)] backdrop-blur-xl">
-        <span
-          className="pointer-events-none silver-star absolute -right-3 top-9 z-20 [--size:0.9rem]"
-          aria-hidden="true"
-        />
-        <span
-          className="pointer-events-none tropical-flower flower-plumeria absolute -left-2 bottom-10 z-20 opacity-70"
-          aria-hidden="true"
-        />
-        <div className="relative aspect-[9/16] overflow-hidden rounded-[1.85rem] bg-ink shadow-[inset_0_0_0_1px_rgba(255,255,255,0.18)]">
+    <div
+      className={`feature-video ${className}`}
+      style={{ "--r": `${tilt}deg` } as React.CSSProperties}
+    >
+      <div className="feature-video__body">
+        <span className="tape feature-video__tape" aria-hidden="true" />
+        <PaperClip className="feature-video__clip" />
+        <Sparkle className="feature-video__star" />
+        <div className="feature-video__screen">
           <video
-            className="block h-full w-full bg-ink object-contain"
             controls
             playsInline
             preload="metadata"
-            poster={poster}
+            poster={poster ? optimizedPoster(poster) : undefined}
             aria-label={label}
             onPlay={(event) => pauseOtherVideos(event.currentTarget)}
           >

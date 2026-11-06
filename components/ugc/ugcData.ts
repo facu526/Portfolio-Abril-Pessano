@@ -26,11 +26,6 @@ export const videoCategories = [
         src: "/videos/unboxing-1.mp4",
         poster: "/video-posters/unboxing-1.jpg",
       },
-      {
-        title: "Video 2",
-        src: "/videos/unboxing-2.mp4",
-        poster: "/video-posters/unboxing-2.jpg",
-      },
     ],
   },
   {
@@ -53,11 +48,6 @@ export const videoCategories = [
     title: "MODA",
     accent: "from-lavender via-skysoft to-paper",
     videos: [
-      {
-        title: "Video 1",
-        src: "/videos/moda-1.mp4",
-        poster: "/video-posters/moda-1.jpg",
-      },
       {
         title: "Video 2",
         src: "/videos/moda-2.mp4",
