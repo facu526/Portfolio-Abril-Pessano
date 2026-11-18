@@ -24,7 +24,7 @@ export function Essence() {
     >
       <div className="shell why__feature">
         <div className="why__head">
-          <PageMark number="02" label={whySection.title} />
+          <PageMark label={whySection.title} />
           <h2 className="why__title" aria-label={whySection.title}>
             <span aria-hidden="true">¿Por qué</span>
             <em aria-hidden="true" className="t-serif strip strip--pink">

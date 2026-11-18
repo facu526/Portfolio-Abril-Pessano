@@ -123,14 +123,6 @@ em {
   text-transform: uppercase;
 }
 
-.page-mark__number {
-  flex: none;
-  padding: 0.28rem 0.5rem;
-  background: var(--color-ink);
-  color: var(--color-paper);
-  letter-spacing: 0.06em;
-}
-
 .tape {
   position: absolute;
   width: 5.2rem;
@@ -2569,11 +2561,6 @@ em {
   padding-block: 3.5rem 3rem;
   background: var(--color-ink);
   color: var(--color-paper);
-}
-
-.contact .page-mark__number {
-  background: var(--color-rosa);
-  color: var(--color-ink);
 }
 
 .contact__grid {

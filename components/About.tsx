@@ -16,7 +16,7 @@ export function About() {
     >
       <div className="shell ugc__grid">
         <div className="ugc__lead">
-          <PageMark number="01" label={profile.kicker} />
+          <PageMark label={profile.kicker} />
           <span className="scrap scrap--grid ugc__scrap" aria-hidden="true" />
           <h2 className="ugc__title">{ugcSection.title}</h2>
           <p className="ugc__meaning">

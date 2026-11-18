@@ -54,7 +54,7 @@ function FeedWindow() {
 function ExamplesHeader() {
   return (
     <Reveal className="shell examples__head">
-      <PageMark number="03" label={examplesSection.kicker} />
+      <PageMark label={examplesSection.kicker} />
       <h2 className="examples__title">
         <Emphasis text={examplesSection.title} em={examplesSection.em} />
       </h2>

@@ -36,7 +36,7 @@ function CreatorCard() {
       </p>
       <div className="hero__card-photo">
         <Image
-          src={moodFrames.ugc}
+          src={moodFrames.credencial}
           alt="Retrato de Abril Pessano"
           fill
           sizes="(max-width: 1023px) 240px, 16vw"

@@ -1,7 +1,6 @@
 import { moodFrames, profile, workTogether } from "@/lib/content";
 import { RevealSection } from "./RevealSection";
 import { Barcode, Heart, Sparkle, WaxSeal } from "./scrapbook/Decor";
-import { InfoCard } from "./scrapbook/InfoCard";
 import { Bow, GlitterStar, HeartSticker, Swirl } from "./scrapbook/Stickers";
 import { Emphasis } from "./scrapbook/Emphasis";
 import { PageMark } from "./scrapbook/PageMark";
@@ -18,7 +17,7 @@ export function PortfolioHighlights() {
       <div className="shell together__stack">
         <span className="together__under" aria-hidden="true" />
         <div className="together__sheet">
-          <PageMark number="04" label={workTogether.kicker} />
+          <PageMark label={workTogether.kicker} />
           <h2 className="together__title">
             {workTogether.title.replace(workTogether.em, "")}
             <em className="t-serif strip strip--pink">{workTogether.em}</em>
@@ -72,7 +71,6 @@ export function PortfolioHighlights() {
             objectPosition="50% 12%"
             className="together__print together__print--b"
           />
-          <InfoCard className="together__info" />
           <HeartSticker className="together__sticker bob" />
           <GlitterStar className="together__glitter twinkle" />
           <Swirl className="together__swirl" />

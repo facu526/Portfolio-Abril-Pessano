@@ -26,6 +26,7 @@ export const moodFrames = {
   makeup: "/frames/makeup-sonrisa.jpg",
   makeupPaleta: "/frames/makeup-paleta.jpg",
   ugc: "/frames/ugc-sonrisa.jpg",
+  credencial: "/frames/ugc-gorra.webp",
   experiencias: "/frames/experiencias-sonrisa.jpg",
   unboxing: "/video-posters/unboxing-1.jpg",
 };
@@ -180,7 +181,7 @@ export const videoCategories: VideoCategory[] = [
     headline: "Unboxing",
     frame: "polaroid",
     videos: [
-      { label: "Video 1", href: "/videos/unboxing-1.mp4", poster: "/video-posters/unboxing-1.jpg" },
+      { label: "Video 1", href: "/videos/unboxing-1.mp4", poster: "/video-posters/unboxing-planchita.webp" },
     ],
   },
   {

@@ -26,7 +26,7 @@ export function Contact() {
     >
       <div className="shell contact__grid">
         <div>
-          <PageMark number="05" label={contactSection.kicker} />
+          <PageMark label={contactSection.kicker} />
           <h2 className="contact__title">
             <Emphasis text={contactSection.title} em={contactSection.em} />
           </h2>
